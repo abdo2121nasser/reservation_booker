@@ -12,3 +12,6 @@ const String kFirstBottomNavigationBarItemSubTitle='Book appointments with top p
 
 const String kSecondBottomNavigationBarItemTitle='My Appointments';
 const String kSecondBottomNavigationBarItemSubTitle='Manage your upcoming appointments';
+
+
+const String kSearchBarHint='Search specialists ....';

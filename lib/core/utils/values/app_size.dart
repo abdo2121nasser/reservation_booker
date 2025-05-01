@@ -16,6 +16,7 @@ final double k2H = 2.w;
 final double k3H = 3.w;
 final double k5H = 5.w;
 final double k10H = 10.w;
+final double k12H = 12.w;
 final double k14H = 14.w;
 final double k16H = 16.w;
 final double k18H = 18.w;
