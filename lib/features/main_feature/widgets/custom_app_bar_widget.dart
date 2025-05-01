@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../features/main_feature/cubits/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
-import '../colors/colors.dart';
-import '../values/font_size.dart';
+import '../cubits/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
+import '../../../core/utils/colors/colors.dart';
+import '../../../core/utils/values/font_size.dart';
 
 class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 

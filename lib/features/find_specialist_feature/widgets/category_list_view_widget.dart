@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reservation_booker/core/utils/strings/strings.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/category_entity.dart';
-
 import '../../../core/utils/values/app_size.dart';
 import 'category_item_widget.dart';
 
@@ -27,7 +26,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: k10V),
+      padding: EdgeInsets.symmetric(vertical: k16V),
       child: SizedBox(
         height: k60V,
         child: Scrollbar(
@@ -35,6 +34,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
           radius: Radius.circular(k20R),
           interactive: true,
           thumbVisibility: true,
+          thickness: k5V,
           child: ListView.separated(
             controller: _scrollController,
             physics: const BouncingScrollPhysics(),
