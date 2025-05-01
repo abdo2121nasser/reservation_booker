@@ -15,3 +15,13 @@ const String kSecondBottomNavigationBarItemSubTitle='Manage your upcoming appoin
 
 
 const String kSearchBarHint='Search specialists ....';
+
+const String kCategoryAll='All';
+const String kCategoryTherapy='Therapy';
+const String kCategoryCoaching='Coaching';
+const String kCategoryFitness='Fitness';
+const String kCategoryNutrition='Nutrition';
+const String kCategoryWellness='Wellness';
+
+
+
