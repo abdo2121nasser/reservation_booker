@@ -40,8 +40,16 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
             physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.only(bottom: k14V),
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) =>
-                CategoryItemWidget(categoryEntity: _categories[index]),
+            itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  setState(() {
+                    _categories
+                        .firstWhere((element) => element.isSelected == true)
+                        .isSelected = false;
+                    _categories[index].isSelected = true;
+                  });
+                },
+                child: CategoryItemWidget(categoryEntity: _categories[index])),
             separatorBuilder: (context, index) => SizedBox(width: k5H),
             itemCount: _categories.length,
           ),
