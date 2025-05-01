@@ -19,7 +19,7 @@ class SignInButtonWidget extends StatelessWidget {
         var formState = authenticationCubitState.authenticationState.form
             as SignInFormWidget;
         return GeneralButtonWidget(
-            label: 'تسجيل الدخول',
+            label: 'Sign In',
             function: () {
               if (formState.validateForm()) {
                 // SignInCubit.get(authenticationContext).signIn();
@@ -32,7 +32,7 @@ class SignInButtonWidget extends StatelessWidget {
             },
             size: Size(double.maxFinite, k20V),
             textColor: kWhiteColor,
-            backgroundColor: kDarkBlueColor,
+            backgroundColor: kBlueColor,
             borderRadius: k10R);
       },
     );

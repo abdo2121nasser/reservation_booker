@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 
 const Color kRedColor = Color(0xffe60000);
 const Color kWhiteColor = Color(0xffffffff);
-const Color kBackgroundColor = Color(0xfff5f7ff);
+const Color kBackgroundColor = Color(0xfff8fafc);
 
 const Color kBlackColor = Color(0xff040201);
-const Color kDarkBlueColor = Color(0xff2b2d5d);
-const Color kGreyColor = Color(0xee6f7783);
+const Color kSwitchBackGroundColor = Color(0xfff1f5f9);
+const Color kLightBlueColor = Color(0xffe7f0f9);
+const Color kBlueColor = Color(0xff4a90e2);
+const Color kLightGreyColor = Color(0xff6b728c);

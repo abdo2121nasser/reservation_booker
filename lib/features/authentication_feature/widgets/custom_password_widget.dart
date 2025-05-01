@@ -30,8 +30,8 @@ class _PasswordFieldState extends State<CustomPasswordWidget> {
       valueListenable: _obscureText,
       builder: (context, obscure, child) {
         return CustomFullInputBlock(
-          label: widget.isConfirm ? 'تأكيد كلمة المرور' : 'كلمة المرور',
-          hint: widget.isConfirm ? 'أدخل تأكيد كلمة المرور' : 'أدخل كلمة المرور',
+          label: widget.isConfirm ? 'Confirm Password' : 'Password',
+          hint: widget.isConfirm ? '#A2523775s' : '#A2523775s',
           validator: widget.isConfirm
               ? (value) => ValidatorService.validateConfirmPassword(
             value,
@@ -43,7 +43,7 @@ class _PasswordFieldState extends State<CustomPasswordWidget> {
           controller: widget.controller,
           prefixIcon: Icon(
             CupertinoIcons.lock,
-            color: kDarkBlueColor,
+            color: kBlueColor,
           ),
           suffixIcon: obscure
               ? const Icon(Icons.visibility_off)

@@ -21,7 +21,7 @@ class SignUpButtonWidget extends StatelessWidget {
         var formState = authenticationCubitState.authenticationState.form
             as SignUpFormWidget;
         return GeneralButtonWidget(
-            label: 'انشاء حساب',
+            label: 'Sign Up',
             function: () {
               if (formState.validateForm()) {
                 // SignUpCubit.get(authenticationContext).signUp();
@@ -33,7 +33,7 @@ class SignUpButtonWidget extends StatelessWidget {
             },
             size: Size(double.maxFinite, k20V),
             textColor: kWhiteColor,
-            backgroundColor: kDarkBlueColor,
+            backgroundColor: kBlueColor,
             borderRadius: k10R);
       },
     );

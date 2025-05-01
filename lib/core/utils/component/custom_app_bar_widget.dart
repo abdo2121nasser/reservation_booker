@@ -28,7 +28,7 @@ class CustomAppBarWidget extends StatelessWidget
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: k30Sp,
-            color: kDarkBlueColor
+            color: kBlueColor
             ),
           ),
         ],

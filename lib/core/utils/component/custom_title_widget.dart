@@ -15,7 +15,7 @@ class CustomTitleWidget extends StatelessWidget {
       style: TextStyle(
           fontSize: k30Sp,
           fontWeight: FontWeight.bold,
-          color: kDarkBlueColor),
+          color: kBlueColor),
     );
   }
 }

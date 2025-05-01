@@ -15,14 +15,14 @@ class CustomEmailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomFullInputBlock(
-      label: 'البريد الاليكتروني',
-      hint: 'ادخل بريدك الاليكتروني',
+      label: 'Email',
+      hint: 'Hello@gmail.com',
       validator: ValidatorService.validateEmail,
       textColor: kBlackColor,
       enableBorder: true,
       prefixIcon: const Icon(
         CupertinoIcons.envelope,
-        color: kDarkBlueColor,
+        color: kBlueColor,
       ),
       controller: controller,);
   }

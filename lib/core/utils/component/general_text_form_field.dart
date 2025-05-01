@@ -67,7 +67,7 @@ class GeneralTextFormField extends StatelessWidget {
 
         filled: true,
         hintText: hint,
-        hintStyle: TextStyle(color: kGreyColor, fontSize: k14Sp),
+        hintStyle: TextStyle(color: kLightGreyColor, fontSize: k14Sp),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(k12R),
@@ -94,7 +94,7 @@ class GeneralTextFormField extends StatelessWidget {
                 ),
                 borderSide: BorderSide(
                   width: k1H,
-                  color: kGreyColor,
+                  color: kLightGreyColor,
                 ),
               )
             : null,
@@ -105,7 +105,7 @@ class GeneralTextFormField extends StatelessWidget {
                 ),
                 borderSide: BorderSide(
                   width: k1H,
-                  color: kGreyColor,
+                  color: kLightGreyColor,
                 ),
               )
             : null,

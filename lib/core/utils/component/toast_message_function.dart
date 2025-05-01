@@ -11,7 +11,7 @@ void showToastMessage({required String message}){
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
       textColor: kWhiteColor,
-      backgroundColor: kDarkBlueColor,
+      backgroundColor: kBlueColor,
       fontSize: k16Sp
   );
 }

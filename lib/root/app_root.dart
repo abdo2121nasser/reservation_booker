@@ -35,13 +35,13 @@ class ReservationApp extends StatelessWidget {
       scaffoldBackgroundColor: kBackgroundColor,
       drawerTheme: const DrawerThemeData(backgroundColor: kBackgroundColor),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: kDarkBlueColor,
+        backgroundColor: kWhiteColor,
         selectedItemColor: kWhiteColor,
-        unselectedItemColor: kGreyColor,
+        unselectedItemColor: kLightGreyColor,
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: kBackgroundColor,
-        iconTheme: IconThemeData(color: kDarkBlueColor),
+        iconTheme: IconThemeData(color: kBlueColor),
       ),
     );
   }
