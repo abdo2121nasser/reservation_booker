@@ -41,47 +41,39 @@ class GetAllSpecialistsFromFireBase implements GetSpecialistsRepository {
   }
 }
 
-// class GetFilteredSpecialistsFromFireBase implements GetSpecialistsRepository {
-//   final String filteredCategory;
-//
-//   GetFilteredSpecialistsFromFireBase({required this.filteredCategory});
-//   @override
-//   Future<List<SpecialistEntity>> getSpecialist() async {
-//     try {
-//       return await FirebaseFirestore.instance
-//           .collection(kSpecialistCollection)
-//           .where(kCategory, isEqualTo: filteredCategory)
-//           .get()
-//           .then((value) {
-//         List<SpecialistModel> specialists = [];
-//         for (var element in value.docs) {
-//           specialists.add(SpecialistModel.fromJson(element.data()));
-//         }
-//         return specialists;
-//       });
-//     } on FirebaseException catch (e) {
-//       final failure = FirebaseFailure.fromFirebase(e);
-//       debugPrint(failure.devMessage);
-//       showToastMessage(
-//         message: failure.userMessage,
-//       );
-//       return [];
-//     } catch (error) {
-//       debugPrint(error.toString());
-//       showToastMessage(message: kUnknownErrorMessage);
-//       return [];
-//     }
-//   }
-// }
-
 class GetSpecialistsFromHive implements GetSpecialistsRepository {
   @override
   Future<List<SpecialistEntity>> getSpecialist() async {
     try {
       var box = Hive.box(kSpecialistBox);
-
-      List<SpecialistEntity> specialists = box.get(kSpecialists, defaultValue: []).cast<SpecialistEntity>();
+      List<SpecialistEntity> specialists =
+          box.get(kSpecialists, defaultValue: []).cast<SpecialistEntity>();
       return specialists;
+    } catch (error) {
+      debugPrint(error.toString());
+      showToastMessage(message: kUnknownErrorMessage);
+      return [];
+    }
+  }
+}
+
+class GetFilteredSpecialistsFromHive implements GetSpecialistsRepository {
+  final String filteredCategory;
+
+  GetFilteredSpecialistsFromHive({required this.filteredCategory});
+  @override
+  Future<List<SpecialistEntity>> getSpecialist() async {
+    try {
+      GetSpecialistsFromHive getSpecialistsFromHive = GetSpecialistsFromHive();
+      List<SpecialistEntity> specialists =
+          await getSpecialistsFromHive.getSpecialist();
+      List<SpecialistEntity> filteredSpecialists = [];
+      for (var element in specialists) {
+        if (element.category == filteredCategory) {
+          filteredSpecialists.add(element);
+        }
+      }
+      return filteredSpecialists;
     } catch (error) {
       debugPrint(error.toString());
       showToastMessage(message: kUnknownErrorMessage);

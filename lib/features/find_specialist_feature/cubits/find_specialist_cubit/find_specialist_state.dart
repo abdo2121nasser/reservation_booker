@@ -24,3 +24,7 @@ final class GetSpecialistsLoadingState extends LoadingState {}
 final class GetSpecialistsSuccessState extends SuccessState {
   GetSpecialistsSuccessState({required super.specialists});
 }
+final class GetFilteredSpecialistsLoadingState extends LoadingState {}
+final class GetFilteredSpecialistsSuccessState extends SuccessState {
+  GetFilteredSpecialistsSuccessState({required super.specialists});
+}

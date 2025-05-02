@@ -71,11 +71,11 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
       _categories[index].isSelected = true;
       if (_categories[index].category == kCategoryAll) {
         FindSpecialistCubit.get(context)
-            .getSpecialists(specialistsRepository: GetAllSpecialistsFromFireBase());
+            .getSpecialists(specialistsRepository: GetSpecialistsFromHive());
       } else {
-        // FindSpecialistCubit.get(context).getSpecialists(
-        //     specialistsRepository: GetFilteredSpecialistsFromFireBase(
-        //         filteredCategory: _categories[index].category));
+        FindSpecialistCubit.get(context).filterSpecialist(
+            specialistsRepository: GetFilteredSpecialistsFromHive(
+                filteredCategory: _categories[index].category));
       }
     });
   }

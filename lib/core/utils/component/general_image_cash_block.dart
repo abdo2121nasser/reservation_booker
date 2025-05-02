@@ -68,7 +68,16 @@ class _GeneralImageCacheBlockState extends State<GeneralImageCacheBlock> {
     }
   }
 
-
+  @override
+  void didUpdateWidget(covariant GeneralImageCacheBlock oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.link != oldWidget.link) {
+      setState(() {
+        _imagePath = null;
+      });
+      _processFile();
+    }
+  }
   bool _isImageFile(File file) {
     final extension = path.extension(file.path).toLowerCase();
     return extension == '.jpg' ||

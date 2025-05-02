@@ -16,7 +16,7 @@ class StoreSpecialists implements StoreSpecialistsRepository {
   @override
   Future<void> storeSpecialist({required List<SpecialistEntity> specialists}) async {
     try {
-      var box =  Hive.box<List<SpecialistEntity>>(kSpecialistBox);
+      var box =  Hive.box(kSpecialistBox);
      await box.put(kSpecialists, specialists);
 
     } catch (error) {

@@ -36,4 +36,11 @@ class FindSpecialistCubit extends Cubit<FindSpecialistState> {
     emit(GetSpecialistsSuccessState(specialists: specialists));
     return specialists;
   }
+ Future<void> filterSpecialist(
+      {required GetSpecialistsRepository specialistsRepository}) async {
+    emit(GetFilteredSpecialistsLoadingState());
+    List<SpecialistEntity> specialists =
+        await specialistsRepository.getSpecialist();
+    emit(GetFilteredSpecialistsSuccessState(specialists: specialists));
+  }
 }
