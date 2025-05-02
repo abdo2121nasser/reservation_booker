@@ -11,6 +11,14 @@ final class SuccessState extends FindSpecialistState {
    SuccessState({required this.specialists});
 
 }
+final class InitializeCubitLoadingState extends LoadingState {
+
+}
+final class InitializeCubitSuccessState extends SuccessState {
+  InitializeCubitSuccessState({required super.specialists});
+
+}
+
 
 final class GetSpecialistsLoadingState extends LoadingState {}
 final class GetSpecialistsSuccessState extends SuccessState {

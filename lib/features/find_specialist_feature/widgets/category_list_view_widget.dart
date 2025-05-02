@@ -15,7 +15,6 @@ class CategoryListViewWidget extends StatefulWidget {
 
 class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
   final ScrollController _scrollController = ScrollController();
-
   final List<CategoryEntity> _categories = [
     CategoryEntity(category: kCategoryAll, isSelected: true),
     CategoryEntity(category: kCategoryCardiologist, isSelected: false),
@@ -34,7 +33,6 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
     CategoryEntity(category: kCategoryGastroenterologist, isSelected: false),
     CategoryEntity(category: kCategoryPulmonologist, isSelected: false),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -73,11 +71,11 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
       _categories[index].isSelected = true;
       if (_categories[index].category == kCategoryAll) {
         FindSpecialistCubit.get(context)
-            .getSpecialists(specialistsRepository: GetAllSpecialists());
+            .getSpecialists(specialistsRepository: GetAllSpecialistsFromFireBase());
       } else {
-        FindSpecialistCubit.get(context).getSpecialists(
-            specialistsRepository: GetFilteredSpecialists(
-                filteredCategory: _categories[index].category));
+        // FindSpecialistCubit.get(context).getSpecialists(
+        //     specialistsRepository: GetFilteredSpecialistsFromFireBase(
+        //         filteredCategory: _categories[index].category));
       }
     });
   }

@@ -15,8 +15,7 @@ class FindSpecialistScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
       FindSpecialistCubit()
-        ..getSpecialists(specialistsRepository:
-        GetAllSpecialists()),
+        ..initializeCubit(),
       child: Column(
         children: [
           const CustomSearchBar(),
