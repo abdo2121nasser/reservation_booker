@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservation_booker/core/utils/strings/strings.dart';
 import 'package:reservation_booker/features/find_specialist_feature/cubits/find_specialist_cubit/find_specialist_cubit.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/category_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/repositries/get_specialists.dart';
+import 'package:reservation_booker/features/find_specialist_feature/screens/find_specialist_screen.dart';
 import '../../../core/utils/values/app_size.dart';
 import 'category_item_widget.dart';
 
@@ -14,6 +16,14 @@ class CategoryListViewWidget extends StatefulWidget {
 }
 
 class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
+  late ChangeCategoryNotifier _categoryNotifier;
+
+  @override
+  void initState() {
+    super.initState();
+    _categoryNotifier = context.read<ChangeCategoryNotifier>();
+    _categoryNotifier.addListener(_handleCategoryChange);
+  }
   final ScrollController _scrollController = ScrollController();
   final List<CategoryEntity> _categories = [
     CategoryEntity(category: kCategoryAll, isSelected: true),
@@ -35,6 +45,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
   ];
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: k16V),
       child: SizedBox(
@@ -79,6 +90,17 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
       }
     });
   }
+  void _handleCategoryChange() {
+    final selected = _categoryNotifier.selectedCategory;
+
+    setState(() {
+      for (var category in _categories) {
+        category.isSelected = category.category == selected.category;
+      }
+    });
+
+  }
+
 
   @override
   void dispose() {
