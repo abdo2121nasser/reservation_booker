@@ -26,6 +26,7 @@ const String kCategoryWellness='Wellness';
 const String kSmileManLink='https://www.bing.com/th/id/OIP.XpEhDSbIbTzkvCGO6fHI3gHaFj?w=196&h=185&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2';
 
 
+const String kSpecialistCollection='specialist collection';
 
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/specialist_information_widget.dart';
 
 import '../../../core/utils/colors/colors.dart';
@@ -7,8 +8,10 @@ import '../../../core/utils/values/app_size.dart';
 import 'custom_cashed_avatar_widget.dart';
 
 class SpecialistContainerWidget extends StatelessWidget {
+  final SpecialistEntity specialistEntity;
   const SpecialistContainerWidget({
     super.key,
+    required this.specialistEntity
   });
 
   @override
@@ -33,12 +36,13 @@ class SpecialistContainerWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomCashedAvatarWidget(
-              imageLink: kSmileManLink,
+              imageLink: specialistEntity.avatarUrl,
               constraints: constrain,
             ),
             SizedBox(width: k10H,),
             SpecialistInformationWidget(
               constraints: constrain,
+              specialistEntity: specialistEntity,
             ),
           ],
         );

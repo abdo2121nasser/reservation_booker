@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/specialist_rate_widget.dart';
 
 import '../../../core/utils/colors/colors.dart';
@@ -6,10 +7,12 @@ import '../../../core/utils/values/font_size.dart';
 
 class SpecialistInformationWidget extends StatelessWidget {
   final BoxConstraints constraints;
+  final SpecialistEntity specialistEntity;
 
   const SpecialistInformationWidget({
     super.key,
-    required this.constraints
+    required this.constraints,
+    required this.specialistEntity
   });
 
   @override
@@ -20,7 +23,7 @@ class SpecialistInformationWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Johnson Sarah .re.',
+           specialistEntity.name,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -28,12 +31,12 @@ class SpecialistInformationWidget extends StatelessWidget {
                 color: kBlackColor),
           ),
           Text(
-            'Therapy',
+            specialistEntity.category,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: k14Sp, color: kLightGreyColor),
           ),
           const Spacer(),
-          const SpecialistRateWidget(rate: 4,),
+           SpecialistRateWidget(rate: specialistEntity.rate.floor(),),
           const Spacer()
         ],
       ),

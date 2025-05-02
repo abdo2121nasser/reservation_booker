@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "760758538718",
+    "project_id": "reservation-app-a79ab",
+    "storage_bucket": "reservation-app-a79ab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760758538718:android:d100c9737f2c46279f0d4f",
+        "android_client_info": {
+          "package_name": "com.example.reservation_booker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsyVc3PFQwzfSNpI-AItBxvTO4sYjxfHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
