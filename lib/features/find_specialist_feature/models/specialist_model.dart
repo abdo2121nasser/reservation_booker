@@ -41,9 +41,10 @@ class AvailableDateModel extends AvailableDateEntity {
   AvailableDateModel({required super.date, required super.availableTimes});
   factory AvailableDateModel.fromJson(Map<String, dynamic> json) {
     return AvailableDateModel(
-      date: DateTime.parse(json['date']),
+      date: (json['date'] as Timestamp).toDate(),
       availableTimes: (json['availableTimes'] as List)
-          .map((e) => DateTime.parse(e))
+          .map(
+              (e) => (e as Timestamp).toDate()) // Convert Timestamp to DateTime
           .toList(),
     );
   }
@@ -51,7 +52,8 @@ class AvailableDateModel extends AvailableDateEntity {
   Map<String, dynamic> toJson() {
     return {
       'date': Timestamp.fromDate(date),
-      'availableTimes': availableTimes.map((e) => Timestamp.fromDate(e)).toList(),
+      'availableTimes':
+          availableTimes.map((e) => Timestamp.fromDate(e)).toList(),
     };
   }
 }

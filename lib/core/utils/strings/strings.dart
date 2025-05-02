@@ -27,6 +27,7 @@ const String kSmileManLink='https://www.bing.com/th/id/OIP.XpEhDSbIbTzkvCGO6fHI3
 
 
 const String kSpecialistCollection='specialist collection';
+const String kUnknownErrorMessage='something went wrong, try again!';
 
 
 
