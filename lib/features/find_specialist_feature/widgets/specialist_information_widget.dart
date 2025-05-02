@@ -8,17 +8,18 @@ import '../../../core/utils/values/font_size.dart';
 class SpecialistInformationWidget extends StatelessWidget {
   final BoxConstraints constraints;
   final SpecialistEntity specialistEntity;
-
+    final bool isBigSize;
   const SpecialistInformationWidget({
     super.key,
     required this.constraints,
-    required this.specialistEntity
+    required this.specialistEntity,
+    this.isBigSize=false
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: constraints.maxWidth*0.7,
+    return Expanded(
+      // width: constraints.maxWidth*0.7,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,13 +28,13 @@ class SpecialistInformationWidget extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: k16Sp,
+                fontSize:isBigSize?k25Sp: k16Sp,
                 color: kBlackColor),
           ),
           Text(
             specialistEntity.category,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: k14Sp, color: kLightGreyColor),
+            style: TextStyle(fontSize: isBigSize?k20Sp:k14Sp, color: kLightGreyColor),
           ),
           const Spacer(),
            SpecialistRateWidget(rate: specialistEntity.rate.floor(),),

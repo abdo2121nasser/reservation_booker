@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/utils/values/font_size.dart';
@@ -15,7 +16,7 @@ class SpecialistRateWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: List.generate(5, (index) {
         return Icon(
-          index < rate ? Icons.star : Icons.star_border,
+          index < rate ? CupertinoIcons.star_fill : CupertinoIcons.star,
           color: Colors.amber,
           size: k18Sp,
         );

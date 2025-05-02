@@ -20,11 +20,7 @@ class CustomSearchBar extends StatelessWidget {
 
     return SearchBar(
       onSubmitted: (value) {
-        FindSpecialistCubit.get(context).filterSpecialist(
-            specialistsRepository: GetFilteredSpecialistsByNameFromHive(
-                filteredName: _searchController.text));
-        _searchController.clear();
-        notifier.resetToAll();
+        _search(context, notifier);
       },
       controller: _searchController,
       hintText: kSearchBarHint,
@@ -50,5 +46,13 @@ class CustomSearchBar extends StatelessWidget {
         EdgeInsets.symmetric(horizontal: k12H),
       ),
     );
+  }
+
+  void _search(BuildContext context, ChangeCategoryNotifier notifier) {
+    FindSpecialistCubit.get(context).filterSpecialist(
+        specialistsRepository: GetFilteredSpecialistsByNameFromHive(
+            filteredName: _searchController.text));
+    _searchController.clear();
+    notifier.resetToAll();
   }
 }

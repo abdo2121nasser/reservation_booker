@@ -41,3 +41,6 @@ const String kSpecialistCollection = 'specialist collection';
 const String kSpecialistBox = 'specialist box';
 const String kSpecialists = 'specialists';
 const String kUnknownErrorMessage = 'something went wrong, try again!';
+
+const String kSpecialistDetailTitle = 'Back To Specialists';
+const String kAboutWord = 'About';

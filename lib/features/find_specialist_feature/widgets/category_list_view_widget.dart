@@ -24,6 +24,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
     _categoryNotifier = context.read<ChangeCategoryNotifier>();
     _categoryNotifier.addListener(_handleCategoryChange);
   }
+
   final ScrollController _scrollController = ScrollController();
   final List<CategoryEntity> _categories = [
     CategoryEntity(category: kCategoryAll, isSelected: true),
@@ -45,7 +46,6 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
   ];
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: EdgeInsets.symmetric(vertical: k16V),
       child: SizedBox(
@@ -90,6 +90,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
       }
     });
   }
+
   void _handleCategoryChange() {
     final selected = _categoryNotifier.selectedCategory;
 
@@ -98,9 +99,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
         category.isSelected = category.category == selected.category;
       }
     });
-
   }
-
 
   @override
   void dispose() {
