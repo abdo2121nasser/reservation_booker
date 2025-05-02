@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reservation_booker/core/utils/strings/strings.dart';
+import 'package:reservation_booker/features/find_specialist_feature/cubits/find_specialist_cubit/find_specialist_cubit.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/category_entity.dart';
+import 'package:reservation_booker/features/find_specialist_feature/repositries/get_specialists.dart';
 import '../../../core/utils/values/app_size.dart';
 import 'category_item_widget.dart';
 
@@ -16,11 +18,21 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
 
   final List<CategoryEntity> _categories = [
     CategoryEntity(category: kCategoryAll, isSelected: true),
-    CategoryEntity(category: kCategoryTherapy, isSelected: false),
-    CategoryEntity(category: kCategoryCoaching, isSelected: false),
-    CategoryEntity(category: kCategoryFitness, isSelected: false),
-    CategoryEntity(category: kCategoryNutrition, isSelected: false),
-    CategoryEntity(category: kCategoryWellness, isSelected: false),
+    CategoryEntity(category: kCategoryCardiologist, isSelected: false),
+    CategoryEntity(category: kCategoryDermatologist, isSelected: false),
+    CategoryEntity(category: kCategoryPediatrician, isSelected: false),
+    CategoryEntity(category: kCategoryOrthopedic, isSelected: false),
+    CategoryEntity(category: kCategoryNeurologist, isSelected: false),
+    CategoryEntity(category: kCategoryPsychiatrist, isSelected: false),
+    CategoryEntity(category: kCategoryGynecologist, isSelected: false),
+    CategoryEntity(category: kCategoryOncologist, isSelected: false),
+    CategoryEntity(category: kCategoryEndocrinologist, isSelected: false),
+    CategoryEntity(category: kCategoryOphthalmologist, isSelected: false),
+    CategoryEntity(category: kCategoryRheumatologist, isSelected: false),
+    CategoryEntity(category: kCategoryUrologist, isSelected: false),
+    CategoryEntity(category: kCategoryAllergist, isSelected: false),
+    CategoryEntity(category: kCategoryGastroenterologist, isSelected: false),
+    CategoryEntity(category: kCategoryPulmonologist, isSelected: false),
   ];
 
   @override
@@ -42,12 +54,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  setState(() {
-                    _categories
-                        .firstWhere((element) => element.isSelected == true)
-                        .isSelected = false;
-                    _categories[index].isSelected = true;
-                  });
+                  _changeCategory(index, context);
                 },
                 child: CategoryItemWidget(categoryEntity: _categories[index])),
             separatorBuilder: (context, index) => SizedBox(width: k5H),
@@ -56,6 +63,23 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
         ),
       ),
     );
+  }
+
+  void _changeCategory(int index, BuildContext context) {
+    return setState(() {
+      _categories
+          .firstWhere((element) => element.isSelected == true)
+          .isSelected = false;
+      _categories[index].isSelected = true;
+      if (_categories[index].category == kCategoryAll) {
+        FindSpecialistCubit.get(context)
+            .getSpecialists(specialistsRepository: GetAllSpecialists());
+      } else {
+        FindSpecialistCubit.get(context).getSpecialists(
+            specialistsRepository: GetFilteredSpecialists(
+                filteredCategory: _categories[index].category));
+      }
+    });
   }
 
   @override

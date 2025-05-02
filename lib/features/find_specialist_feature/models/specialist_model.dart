@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:reservation_booker/core/utils/strings/strings.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
 
 class SpecialistModel extends SpecialistEntity {
@@ -13,7 +14,7 @@ class SpecialistModel extends SpecialistEntity {
   factory SpecialistModel.fromJson(Map<String, dynamic> json) {
     return SpecialistModel(
       name: json['name'],
-      category: json['category'],
+      category: json[kCategory],
       rate: json['rate'],
       avatarUrl: json['avatarUrl'],
       about: json['about'],
