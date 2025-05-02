@@ -3,15 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:reservation_booker/core/utils/colors/colors.dart';
 import 'package:reservation_booker/core/utils/strings/strings.dart';
 import 'package:reservation_booker/core/utils/values/app_size.dart';
+import 'package:reservation_booker/features/find_specialist_feature/cubits/find_specialist_cubit/find_specialist_cubit.dart';
+import 'package:reservation_booker/features/find_specialist_feature/repositries/get_specialists.dart';
 
 import '../../../core/utils/values/font_size.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
-
+  CustomSearchBar({super.key});
+  final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SearchBar(
+      onSubmitted: (value) {
+        FindSpecialistCubit.get(context).filterSpecialist(
+            specialistsRepository: GetFilteredSpecialistsByNameFromHive(
+                filteredName: _searchController.text));
+        _searchController.clear();
+      },
+      controller: _searchController,
       hintText: kSearchBarHint,
       leading: const Icon(
         CupertinoIcons.search,
@@ -26,6 +35,9 @@ class CustomSearchBar extends StatelessWidget {
       ),
       backgroundColor: const WidgetStatePropertyAll(kBackgroundColor),
       textStyle: WidgetStatePropertyAll(
+        TextStyle(color: kBlackColor, fontSize: k18Sp),
+      ),
+      hintStyle: WidgetStatePropertyAll(
         TextStyle(color: kLightGreyColor, fontSize: k18Sp),
       ),
       padding: WidgetStatePropertyAll<EdgeInsets>(

@@ -57,10 +57,10 @@ class GetSpecialistsFromHive implements GetSpecialistsRepository {
   }
 }
 
-class GetFilteredSpecialistsFromHive implements GetSpecialistsRepository {
+class GetFilteredSpecialistsByCategoryFromHive implements GetSpecialistsRepository {
   final String filteredCategory;
 
-  GetFilteredSpecialistsFromHive({required this.filteredCategory});
+  GetFilteredSpecialistsByCategoryFromHive({required this.filteredCategory});
   @override
   Future<List<SpecialistEntity>> getSpecialist() async {
     try {
@@ -81,3 +81,30 @@ class GetFilteredSpecialistsFromHive implements GetSpecialistsRepository {
     }
   }
 }
+
+class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
+  final String filteredName;
+
+  GetFilteredSpecialistsByNameFromHive({required this.filteredName});
+  @override
+  Future<List<SpecialistEntity>> getSpecialist() async {
+    try {
+      GetSpecialistsFromHive getSpecialistsFromHive = GetSpecialistsFromHive();
+      List<SpecialistEntity> specialists =
+          await getSpecialistsFromHive.getSpecialist();
+      List<SpecialistEntity> filteredSpecialists = [];
+      for (var element in specialists) {
+        if (element.name.toLowerCase().contains(filteredName.toLowerCase())) {
+          filteredSpecialists.add(element);
+        }
+      }
+      return filteredSpecialists;
+    } catch (error) {
+      debugPrint(error.toString());
+      showToastMessage(message: kUnknownErrorMessage);
+      return [];
+    }
+  }
+}
+
+

@@ -43,4 +43,6 @@ class FindSpecialistCubit extends Cubit<FindSpecialistState> {
         await specialistsRepository.getSpecialist();
     emit(GetFilteredSpecialistsSuccessState(specialists: specialists));
   }
+
+
 }

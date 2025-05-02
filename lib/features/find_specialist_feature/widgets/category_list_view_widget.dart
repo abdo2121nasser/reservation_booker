@@ -74,7 +74,7 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
             .getSpecialists(specialistsRepository: GetSpecialistsFromHive());
       } else {
         FindSpecialistCubit.get(context).filterSpecialist(
-            specialistsRepository: GetFilteredSpecialistsFromHive(
+            specialistsRepository: GetFilteredSpecialistsByCategoryFromHive(
                 filteredCategory: _categories[index].category));
       }
     });

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/specialist_container_widget.dart';
-
 import '../../../core/utils/values/app_size.dart';
 import '../entities/specialist_entity.dart';
 
