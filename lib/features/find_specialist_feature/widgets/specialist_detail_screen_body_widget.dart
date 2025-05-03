@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservation_booker/core/utils/colors/colors.dart';
 import 'package:reservation_booker/core/utils/component/general_button_widget.dart';
 import 'package:reservation_booker/core/utils/strings/strings.dart';
 import 'package:reservation_booker/core/utils/values/app_size.dart';
+import 'package:reservation_booker/features/find_specialist_feature/cubits/book_appointment_cubit/book_appointment_cubit.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/specialist_about_section_widget.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/specialist_profile_section_widget.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/time_section_widget.dart';
@@ -25,19 +27,23 @@ class SpecialistDetailScreenBodyWidget extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SpecialistProfileSectionWidget(specialistEntity: specialistEntity),
-          SpecialistAboutSectionWidget(content: specialistEntity.about),
+          SpecialistProfileSectionWidget(dataEntity: specialistEntity.data),
+          SpecialistAboutSectionWidget(content: specialistEntity.data.about),
           DateSectionWidget(availableDates: specialistEntity.availableDates),
           isDateSelected(context)
-              ? TimeSectionWidget(
-                  availableTimes: getSelectedDate(context).availableTimes)
+              ? TimeSectionWidget(availableTimes: getSelectedDate(context))
               : const SizedBox.shrink(),
-          isDateSelected(context)?
-          ConfirmAppointmentButtonWidget()
+          isDateSelected(context)
+              ? BlocProvider(
+                  create: (context) => BookAppointmentCubit(),
+                  child: ConfirmAppointmentButtonWidget(
+                    dataEntity: specialistEntity.data,
+                  ),
+                )
               : const SizedBox.shrink(),
-          SizedBox(height: k10V,)
-
-
+          SizedBox(
+            height: k10V,
+          )
         ],
       ),
     );
@@ -45,7 +51,6 @@ class SpecialistDetailScreenBodyWidget extends StatelessWidget {
 
   bool isDateSelected(BuildContext context) =>
       Provider.of<DateChangerNotifier>(context).isDateSelected;
-  AvailableDateEntity getSelectedDate(BuildContext context) =>
-      Provider.of<DateChangerNotifier>(context).selectedDate;
+  List<AvailableTimeEntity> getSelectedDate(BuildContext context) =>
+      Provider.of<DateChangerNotifier>(context).selectedDate.availableTimes;
 }
-

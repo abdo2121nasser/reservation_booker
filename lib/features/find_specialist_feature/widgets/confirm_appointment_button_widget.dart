@@ -1,4 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reservation_booker/features/find_specialist_feature/cubits/book_appointment_cubit/book_appointment_cubit.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/appointment_entity.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
+import 'package:reservation_booker/features/find_specialist_feature/repositries/book_appointment.dart';
 
 import '../../../core/utils/colors/colors.dart';
 import '../../../core/utils/component/general_button_widget.dart';
@@ -8,8 +12,10 @@ import '../screens/specialist_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class ConfirmAppointmentButtonWidget extends StatelessWidget {
+  final DataEntity dataEntity;
   const ConfirmAppointmentButtonWidget({
     super.key,
+    required this.dataEntity
   });
 
   @override
@@ -17,7 +23,15 @@ class ConfirmAppointmentButtonWidget extends StatelessWidget {
     var provider = Provider.of<DateChangerNotifier>(context);
     return GeneralButtonWidget(
         label: kConfirmAppointment,
-        function: () {},
+        function: () {
+          if(provider.isTimeSelected){
+            BookAppointmentCubit.get(context).bookAppointment(
+                bookAppointmentRepository: BookAppointmentFromFireBase(),
+                appointmentData: AppointmentEntity(specialistData: dataEntity,
+                    selectedDate: provider.selectedDate.date,
+                    selectedTime: provider.selectedTime));
+          }
+        },
         textColor: kWhiteColor,
         backgroundColor:
             provider.isTimeSelected ? kOrangeColor : kLightOrangeColor,

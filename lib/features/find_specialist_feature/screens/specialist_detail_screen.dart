@@ -26,24 +26,27 @@ class SpecialistDetailScreen extends StatelessWidget {
 
 class DateChangerNotifier extends ChangeNotifier {
   AvailableDateEntity? _selectedDate;
-  AvailableTimeEntity? _selectedTime;
+  DateTime? _selectedTime;
 
   void selectDate({required AvailableDateEntity date}) {
+    date.availableTimes = date.availableTimes.map((time) {
+      time.isSelected=false;
+      return time;
+
+    }).toList();
     _selectedDate = date;
     _selectedTime = null;
     notifyListeners();
   }
-  AvailableDateEntity get selectedDate=>_selectedDate!;
-  bool get isDateSelected =>_selectedDate!=null;
 
-  void selectTime({required AvailableTimeEntity time}) {
+  AvailableDateEntity get selectedDate => _selectedDate!;
+  bool get isDateSelected => _selectedDate != null;
+
+  void selectTime({required DateTime time}) {
     _selectedTime = time;
     notifyListeners();
   }
-  bool get isTimeSelected =>_selectedTime!=null;
 
-
+  bool get isTimeSelected => _selectedTime != null;
+  DateTime get selectedTime => _selectedTime!;
 }
-
-
-

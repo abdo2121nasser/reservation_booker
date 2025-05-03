@@ -47,3 +47,6 @@ const String kAboutWord = 'About';
 const String kDateSection = 'Date Section';
 const String kTimeSection = 'Time Section';
 const String kConfirmAppointment = 'Confirm Appointment';
+
+const String kMyAppointmentCollection = 'my appointment collection';
+

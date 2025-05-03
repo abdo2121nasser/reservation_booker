@@ -4,20 +4,19 @@ import 'package:reservation_booker/features/find_specialist_feature/entities/spe
 
 class SpecialistModel extends SpecialistEntity {
   SpecialistModel({
-    required super.name,
-    required super.category,
-    required super.rate,
-    required super.avatarUrl,
-    required super.about,
+    required super.data,
     required super.availableDates,
   });
+
   factory SpecialistModel.fromJson(Map<String, dynamic> json) {
     return SpecialistModel(
-      name: json['name'],
-      category: json[kCategory],
-      rate: json['rate'],
-      avatarUrl: json['avatarUrl'],
-      about: json['about'],
+      data: DataEntity(
+        name: json['name'],
+        category: json[kCategory],
+        rate: json['rate'],
+        avatarUrl: json['avatarUrl'],
+        about: json['about'],
+      ),
       availableDates: (json['availableDates'] as List)
           .map((e) => AvailableDateModel.fromJson(e))
           .toList(),
@@ -26,11 +25,11 @@ class SpecialistModel extends SpecialistEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
-      'category': category,
-      'rate': rate,
-      'avatarUrl': avatarUrl,
-      'about': about,
+      'name': data.name,
+      'category': data.category,
+      'rate': data.rate,
+      'avatarUrl': data.avatarUrl,
+      'about': data.about,
       'availableDates': availableDates
           .map((e) => (e as AvailableDateModel).toJson())
           .toList(),

@@ -63,7 +63,7 @@ class _TimeItemsListViewWidgetState extends State<TimeItemsListViewWidget> {
     setState(() {
       widget.availableTimes[index].isSelected = true;
       Provider.of<DateChangerNotifier>(context, listen: false)
-          .selectTime(time: widget.availableTimes[index]);
+          .selectTime(time: widget.availableTimes[index].time);
     });
   }
 

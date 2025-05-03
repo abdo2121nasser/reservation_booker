@@ -7,12 +7,12 @@ import '../../../core/utils/values/font_size.dart';
 
 class SpecialistInformationWidget extends StatelessWidget {
   final BoxConstraints constraints;
-  final SpecialistEntity specialistEntity;
+  final DataEntity dataEntity;
     final bool isBigSize;
   const SpecialistInformationWidget({
     super.key,
     required this.constraints,
-    required this.specialistEntity,
+    required this.dataEntity,
     this.isBigSize=false
   });
 
@@ -24,7 +24,7 @@ class SpecialistInformationWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-           specialistEntity.name,
+           dataEntity.name,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -32,12 +32,12 @@ class SpecialistInformationWidget extends StatelessWidget {
                 color: kBlackColor),
           ),
           Text(
-            specialistEntity.category,
+            dataEntity.category,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: isBigSize?k20Sp:k14Sp, color: kLightGreyColor),
           ),
           const Spacer(),
-           SpecialistRateWidget(rate: specialistEntity.rate.floor(),),
+           SpecialistRateWidget(rate: dataEntity.rate.floor(),),
           const Spacer()
         ],
       ),

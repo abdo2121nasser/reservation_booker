@@ -9,10 +9,10 @@ import 'circle_bordered_avatar_widget.dart';
 class SpecialistProfileSectionWidget extends StatelessWidget {
   const SpecialistProfileSectionWidget({
     super.key,
-    required this.specialistEntity,
+    required this.dataEntity,
   });
 
-  final SpecialistEntity specialistEntity;
+  final DataEntity dataEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SpecialistProfileSectionWidget extends StatelessWidget {
             CircleBorderedAvatarWidget(constrains: constrains,),
             SpecialistInformationWidget(
               constraints: constrains,
-              specialistEntity: specialistEntity,
+              dataEntity: dataEntity,
               isBigSize: true,
             )
           ],

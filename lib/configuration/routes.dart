@@ -32,64 +32,66 @@ class AppRoute {
 }
 
 var x = SpecialistEntity(
-  name: 'Dr. Sarah Johnson',
-  category: 'Therapy',
-  rate: 4.9,
-  avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
-  about:
-      'With over 10 years of experience in cognitive behavioral therapy, I help patients develop coping strategies for anxiety and depression.',
+  data: DataEntity(
+    name: 'Dr. Sarah Johnson',
+    category: 'Therapy',
+    rate: 4.9,
+    avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
+    about:
+        'With over 10 years of experience in cognitive behavioral therapy, I help patients develop coping strategies for anxiety and depression.',
+  ),
   availableDates: [
     AvailableDateEntity(
       date: DateTime(2025, 5, 2),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),),
-
-
+        AvailableTimeEntity(
+          time: DateTime(2025, 5, 2, 9, 0),
+        ),
       ],
-    ),  AvailableDateEntity(
+    ),
+    AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
       ],
-    ),AvailableDateEntity(
+    ),
+    AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
       ],
-    ),AvailableDateEntity(
+    ),
+    AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
       ],
-    ),AvailableDateEntity(
+    ),
+    AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
       ],
-    ),AvailableDateEntity(
+    ),
+    AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
       ],
     ),
   ],
