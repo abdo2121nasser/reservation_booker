@@ -18,11 +18,9 @@ class SpecialContainerListViewWidget extends StatelessWidget {
               specialistsRepository: GetAllSpecialistsFromFireBase());
         },
         child: ListView.separated(
-            itemBuilder: (context, index) => InkWell(
-                onTap: () async {},
-                child: SpecialistContainerWidget(
-                  specialistEntity: specialists[index],
-                )),
+            itemBuilder: (context, index) => SpecialistContainerWidget(
+              specialistEntity: specialists[index],
+            ),
             separatorBuilder: (context, index) => SizedBox(
                   height: k10V,
                 ),

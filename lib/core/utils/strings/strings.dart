@@ -16,21 +16,12 @@ const String kSecondBottomNavigationBarItemSubTitle =
 const String kSearchBarHint = 'Search specialists ....';
 
 const String kCategoryAll = 'All';
-const String kCategoryCardiologist = "Cardiologist";
-const String kCategoryDermatologist = "Dermatologist";
-const String kCategoryPediatrician = "Pediatrician";
-const String kCategoryOrthopedic = "Orthopedic";
-const String kCategoryNeurologist = "Neurologist";
-const String kCategoryPsychiatrist = "Psychiatrist";
-const String kCategoryGynecologist = "Gynecologist";
-const String kCategoryOncologist = "Oncologist";
-const String kCategoryEndocrinologist = "Endocrinologist";
-const String kCategoryOphthalmologist = "Ophthalmologist";
-const String kCategoryRheumatologist = "Rheumatologist";
-const String kCategoryUrologist = "Urologist";
-const String kCategoryAllergist = "Allergist";
-const String kCategoryGastroenterologist = "Gastroenterologist";
-const String kCategoryPulmonologist = "Pulmonologist";
+const String kCategoryTherapyAndCounseling = 'Therapy & Counseling';
+const String kCategoryPhysicalTherapy = 'Physical Therapy';
+const String kCategoryNutritionCounseling = 'Nutrition Counseling';
+const String kCategoryCareerCoaching = 'Career Coaching';
+const String kCategoryYogaAndMeditation = 'Yoga & Meditation';
+const String kCategoryFitnessTraining = 'Fitness Training';
 
 const String kCategory = 'category';
 

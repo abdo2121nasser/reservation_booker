@@ -13,7 +13,7 @@ class AppRoute {
   static const specialistDetailScreen = '/specialist-detail-screen';
 
   static final router =
-      GoRouter(initialLocation: specialistDetailScreen, routes: [
+      GoRouter(initialLocation: mainScreen, routes: [
     GoRoute(
       path: authenticationScreen,
       builder: (context, state) => AuthenticationScreen(),
@@ -24,75 +24,78 @@ class AppRoute {
     ),
     GoRoute(
       path: specialistDetailScreen,
-      builder: (context, state) => SpecialistDetailScreen(
-        specialistEntity: x,
-      ),
+      builder: (context, state) {
+        final SpecialistEntity specialist = state.extra as SpecialistEntity;
+        return SpecialistDetailScreen(
+        specialistEntity: specialist,
+      );
+      },
     ),
   ]);
 }
 
-var x = SpecialistEntity(
-  data: DataEntity(
-    name: 'Dr. Sarah Johnson',
-    category: 'Therapy',
-    rate: 4.9,
-    avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
-    about:
-        'With over 10 years of experience in cognitive behavioral therapy, I help patients develop coping strategies for anxiety and depression.',
-  ),
-  availableDates: [
-    AvailableDateEntity(
-      date: DateTime(2025, 5, 2),
-      availableTimes: [
-        AvailableTimeEntity(
-          time: DateTime(2025, 5, 2, 9, 0),
-        ),
-      ],
-    ),
-    AvailableDateEntity(
-      date: DateTime(2025, 6, 4),
-      availableTimes: [
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-      ],
-    ),
-    AvailableDateEntity(
-      date: DateTime(2025, 6, 4),
-      availableTimes: [
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-      ],
-    ),
-    AvailableDateEntity(
-      date: DateTime(2025, 6, 4),
-      availableTimes: [
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-      ],
-    ),
-    AvailableDateEntity(
-      date: DateTime(2025, 6, 4),
-      availableTimes: [
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-      ],
-    ),
-    AvailableDateEntity(
-      date: DateTime(2025, 6, 4),
-      availableTimes: [
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
-        AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
-      ],
-    ),
-  ],
-);
+// var x = SpecialistEntity(
+//   data: DataEntity(
+//     name: 'Dr. Sarah Johnson',
+//     category: 'Therapy',
+//     rate: 4.9,
+//     avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
+//     about:
+//         'With over 10 years of experience in cognitive behavioral therapy, I help patients develop coping strategies for anxiety and depression.',
+//   ),
+//   availableDates: [
+//     AvailableDateEntity(
+//       date: DateTime(2025, 5, 2),
+//       availableTimes: [
+//         AvailableTimeEntity(
+//           time: DateTime(2025, 5, 2, 9, 0),
+//         ),
+//       ],
+//     ),
+//     AvailableDateEntity(
+//       date: DateTime(2025, 6, 4),
+//       availableTimes: [
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
+//       ],
+//     ),
+//     AvailableDateEntity(
+//       date: DateTime(2025, 6, 4),
+//       availableTimes: [
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
+//       ],
+//     ),
+//     AvailableDateEntity(
+//       date: DateTime(2025, 6, 4),
+//       availableTimes: [
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
+//       ],
+//     ),
+//     AvailableDateEntity(
+//       date: DateTime(2025, 6, 4),
+//       availableTimes: [
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
+//       ],
+//     ),
+//     AvailableDateEntity(
+//       date: DateTime(2025, 6, 4),
+//       availableTimes: [
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+//         AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
+//       ],
+//     ),
+//   ],
+// );

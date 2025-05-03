@@ -16,11 +16,12 @@ Future<void> main() async {
   await Hive.initFlutter();
 
   Hive.registerAdapter(SpecialistEntityAdapter());
+  Hive.registerAdapter(DataEntityAdapter());
   Hive.registerAdapter(AvailableDateEntityAdapter());
+  Hive.registerAdapter(AvailableTimeEntityAdapter());
 
   await Hive.openBox(kSpecialistBox);
   Bloc.observer = MyBlocObserver();
-  // await Firebase.initializeApp(); // <-- this is required
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

@@ -11,11 +11,10 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
   BookAppointmentCubit() : super(BookAppointmentInitial());
   static BookAppointmentCubit get(context) => BlocProvider.of(context);
 
-  bookAppointment(
-      {required BookAppointmentRepository bookAppointmentRepository,
-      required AppointmentEntity appointmentData}) {
+  Future <void>bookAppointment(
+      {required BookAppointmentRepository bookAppointmentRepository}) async {
     emit(BookAppointmentLoadingState());
-    bookAppointmentRepository.book(appointmentData: appointmentData);
+   await bookAppointmentRepository.book();
     emit(BookAppointmentSuccessState());
   }
 }

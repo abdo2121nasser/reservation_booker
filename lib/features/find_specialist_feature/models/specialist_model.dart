@@ -30,8 +30,11 @@ class SpecialistModel extends SpecialistEntity {
       'rate': data.rate,
       'avatarUrl': data.avatarUrl,
       'about': data.about,
-      'availableDates': availableDates
-          .map((e) => (e as AvailableDateModel).toJson())
+      'availableDates': availableDates.map((e) {
+        return AvailableDateModel(
+                date: e.date, availableTimes: e.availableTimes)
+            .toJson();
+      }) // This ensures you're calling toJson on AvailableDateModel
           .toList(),
     };
   }
@@ -47,7 +50,6 @@ class AvailableDateModel extends AvailableDateEntity {
   factory AvailableDateModel.fromJson(Map<String, dynamic> json) {
     return AvailableDateModel(
       date: (json['date'] as Timestamp).toDate(),
-      isSelected: json['isSelected'] ?? false,
       availableTimes: (json['availableTimes'] as List)
           .map((e) => AvailableTimeModel.fromJson(e))
           .toList(),
@@ -57,9 +59,10 @@ class AvailableDateModel extends AvailableDateEntity {
   Map<String, dynamic> toJson() {
     return {
       'date': Timestamp.fromDate(date),
-      'isSelected': isSelected,
       'availableTimes': availableTimes
-          .map((e) => (e as AvailableTimeModel).toJson())
+          .map((e) {
+         return   AvailableTimeModel(time: e.time).toJson();
+          })
           .toList(),
     };
   }
@@ -68,20 +71,18 @@ class AvailableDateModel extends AvailableDateEntity {
 class AvailableTimeModel extends AvailableTimeEntity {
   AvailableTimeModel({
     required super.time,
-    required super.isSelected,
+    super.isSelected,
   });
 
   factory AvailableTimeModel.fromJson(Map<String, dynamic> json) {
     return AvailableTimeModel(
       time: (json['time'] as Timestamp).toDate(),
-      isSelected: json['isSelected'] ?? false,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'time': Timestamp.fromDate(time),
-      'isSelected': isSelected,
     };
   }
 }

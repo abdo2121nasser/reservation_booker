@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reservation_booker/configuration/routes.dart';
 import 'package:reservation_booker/features/find_specialist_feature/cubits/book_appointment_cubit/book_appointment_cubit.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/appointment_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
@@ -23,13 +24,14 @@ class ConfirmAppointmentButtonWidget extends StatelessWidget {
     var provider = Provider.of<DateChangerNotifier>(context);
     return GeneralButtonWidget(
         label: kConfirmAppointment,
-        function: () {
+        function: () async{
           if(provider.isTimeSelected){
-            BookAppointmentCubit.get(context).bookAppointment(
-                bookAppointmentRepository: BookAppointmentFromFireBase(),
-                appointmentData: AppointmentEntity(specialistData: dataEntity,
+            await BookAppointmentCubit.get(context).
+            bookAppointment(
+                bookAppointmentRepository: BookAppointmentFromFireBase(appointmentEntity: AppointmentEntity(specialistData: dataEntity,
                     selectedDate: provider.selectedDate.date,
-                    selectedTime: provider.selectedTime));
+                    selectedTime: provider.selectedTime)),);
+            AppRoute.router.pop();
           }
         },
         textColor: kWhiteColor,

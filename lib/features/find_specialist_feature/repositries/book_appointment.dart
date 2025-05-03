@@ -8,29 +8,31 @@ import '../../../core/utils/component/toast_message_function.dart';
 import '../entities/appointment_entity.dart';
 
 abstract class BookAppointmentRepository {
-  Future<void> book({required AppointmentEntity appointmentData});
+  final AppointmentEntity appointmentEntity;
+
+  BookAppointmentRepository({required this.appointmentEntity});
+  Future<void> book();
 }
 
-class BookAppointmentFromFireBase implements BookAppointmentRepository {
+class BookAppointmentFromFireBase extends BookAppointmentRepository {
+  BookAppointmentFromFireBase({required super.appointmentEntity});
   @override
-  Future<void> book({required AppointmentEntity appointmentData}) async {
+  Future<void> book() async {
     try {
       AppointmentModel appointmentModel = AppointmentModel(
-          specialistData: appointmentData.specialistData,
-          selectedDate: appointmentData.selectedDate,
-          selectedTime: appointmentData.selectedTime);
+          specialistData: appointmentEntity.specialistData,
+          selectedDate: appointmentEntity.selectedDate,
+          selectedTime: appointmentEntity.selectedTime);
       FirebaseFirestore.instance
           .collection(kMyAppointmentCollection)
           .add(appointmentModel.toJson());
-    }
-    on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
       final failure = FirebaseFailure.fromFirebase(e);
       debugPrint(failure.devMessage);
       showToastMessage(
         message: failure.userMessage,
       );
-    }
-    catch (error) {
+    } catch (error) {
       debugPrint(error.toString());
       showToastMessage(message: kUnknownErrorMessage);
     }

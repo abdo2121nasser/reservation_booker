@@ -28,21 +28,11 @@ class _CategoryListViewWidgetState extends State<CategoryListViewWidget> {
   final ScrollController _scrollController = ScrollController();
   final List<CategoryEntity> _categories = [
     CategoryEntity(category: kCategoryAll, isSelected: true),
-    CategoryEntity(category: kCategoryCardiologist, isSelected: false),
-    CategoryEntity(category: kCategoryDermatologist, isSelected: false),
-    CategoryEntity(category: kCategoryPediatrician, isSelected: false),
-    CategoryEntity(category: kCategoryOrthopedic, isSelected: false),
-    CategoryEntity(category: kCategoryNeurologist, isSelected: false),
-    CategoryEntity(category: kCategoryPsychiatrist, isSelected: false),
-    CategoryEntity(category: kCategoryGynecologist, isSelected: false),
-    CategoryEntity(category: kCategoryOncologist, isSelected: false),
-    CategoryEntity(category: kCategoryEndocrinologist, isSelected: false),
-    CategoryEntity(category: kCategoryOphthalmologist, isSelected: false),
-    CategoryEntity(category: kCategoryRheumatologist, isSelected: false),
-    CategoryEntity(category: kCategoryUrologist, isSelected: false),
-    CategoryEntity(category: kCategoryAllergist, isSelected: false),
-    CategoryEntity(category: kCategoryGastroenterologist, isSelected: false),
-    CategoryEntity(category: kCategoryPulmonologist, isSelected: false),
+    CategoryEntity(category: kCategoryPhysicalTherapy, isSelected: false),
+    CategoryEntity(category: kCategoryNutritionCounseling, isSelected: false),
+    CategoryEntity(category: kCategoryCareerCoaching, isSelected: false),
+    CategoryEntity(category: kCategoryYogaAndMeditation, isSelected: false),
+    CategoryEntity(category: kCategoryFitnessTraining, isSelected: false),
   ];
   @override
   Widget build(BuildContext context) {
