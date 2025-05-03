@@ -32,7 +32,7 @@ class FindSpecialistCubit extends Cubit<FindSpecialistState> {
     emit(GetSpecialistsLoadingState());
     List<SpecialistEntity> specialists =
         await specialistsRepository.getSpecialist();
-    await StoreSpecialists().storeSpecialist(specialists: specialists);
+    await StoreSpecialistsUsingHive().storeSpecialist(specialists: specialists);
     emit(GetSpecialistsSuccessState(specialists: specialists));
     return specialists;
   }

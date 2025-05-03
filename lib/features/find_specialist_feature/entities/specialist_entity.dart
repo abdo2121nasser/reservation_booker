@@ -8,14 +8,11 @@ class SpecialistEntity {
   final DataEntity data;
 
   @HiveField(1)
-   List<AvailableDateEntity> availableDates;
-  @HiveField(2)
-  final String docId;
+  List<AvailableDateEntity> availableDates;
 
   SpecialistEntity({
     required this.data,
     required this.availableDates,
-    required this.docId
   });
 }
 
@@ -35,8 +32,11 @@ class DataEntity {
 
   @HiveField(4)
   final String about;
+  @HiveField(5)
+  final String specialistDocId;
 
   DataEntity({
+    required this.specialistDocId,
     required this.name,
     required this.category,
     required this.rate,

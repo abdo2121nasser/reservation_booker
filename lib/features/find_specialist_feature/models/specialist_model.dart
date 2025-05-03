@@ -6,13 +6,12 @@ class SpecialistModel extends SpecialistEntity {
   SpecialistModel({
     required super.data,
     required super.availableDates,
-    required super.docId
   });
 
   factory SpecialistModel.fromJson({required Map<String, dynamic> json,required String docId}) {
     return SpecialistModel(
-      docId: docId,
       data: DataEntity(
+        specialistDocId: docId,
         name: json['name'],
         category: json[kCategory],
         rate: json['rate'],

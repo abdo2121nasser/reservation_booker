@@ -7,6 +7,8 @@ import 'package:reservation_booker/core/utils/values/app_size.dart';
 import 'package:reservation_booker/features/main_feature/cubits/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
 import 'package:reservation_booker/features/main_feature/widgets/custom_bottom_navigation_bar_widget.dart';
 
+import '../../find_specialist_feature/cubits/find_specialist_cubit/find_specialist_cubit.dart';
+
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
@@ -15,17 +17,22 @@ class MainScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => BottomNavigationBarCubit(),
       child: Scaffold(
-        appBar:const CustomAppBarWidget(),
+        appBar: const CustomAppBarWidget(),
         body: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(
           builder: (context, state) {
-            return Padding(
-              padding:  EdgeInsets.symmetric(horizontal: k20H,vertical: k10V),
-              child: state.body,
+            return BlocProvider(
+                create: (context) =>
+                FindSpecialistCubit()
+                  ..initializeCubit(),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: k20H, vertical: k10V),
+                child: state.body,
+              ),
             );
           },
         ),
 
-        bottomNavigationBar:const CustomBottomNavigationBarWidget(),
+        bottomNavigationBar: const CustomBottomNavigationBarWidget(),
       ),
     );
   }

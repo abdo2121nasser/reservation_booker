@@ -4,20 +4,24 @@ import 'package:reservation_booker/features/find_specialist_feature/entities/spe
 import '../entities/appointment_entity.dart';
 
 class AppointmentModel extends AppointmentEntity {
+  final String docId;
   AppointmentModel({
     required super.specialistData,
     required super.selectedDate,
     required super.selectedTime,
+    this.docId=''
   });
 
-  factory AppointmentModel.fromJson(Map<String, dynamic> json) {
+  factory AppointmentModel.fromJson({required Map<String, dynamic> json,required String docId}) {
     return AppointmentModel(
+      docId: docId,
       specialistData: DataEntity(
-        name: json['name'],
-        category: json['category'],
-        rate: json['rate'],
-        avatarUrl: json['avatarUrl'],
-        about: json['about'],
+        specialistDocId: json['specialistData']['specialistDocId'],
+        name: json['specialistData']['name'],
+        category: json['specialistData']['category'],
+        rate: json['specialistData']['rate'],
+        avatarUrl: json['specialistData']['avatarUrl'],
+        about: json['specialistData']['about'],
       ),
       selectedDate: (json['selectedDate'] as Timestamp).toDate(),
       selectedTime: (json['selectedTime'] as Timestamp).toDate(),
@@ -27,6 +31,7 @@ class AppointmentModel extends AppointmentEntity {
   Map<String, dynamic> toJson() {
     return {
       'specialistData': {
+        'specialistDocId':specialistData.specialistDocId,
         'name': specialistData.name,
         'category': specialistData.category,
         'rate': specialistData.rate,

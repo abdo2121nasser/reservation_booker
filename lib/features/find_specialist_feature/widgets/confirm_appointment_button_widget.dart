@@ -16,9 +16,8 @@ import 'package:provider/provider.dart';
 
 class ConfirmAppointmentButtonWidget extends StatelessWidget {
   final DataEntity dataEntity;
-  final String specialistDocId;
   const ConfirmAppointmentButtonWidget(
-      {super.key, required this.dataEntity, required this.specialistDocId});
+      {super.key, required this.dataEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class ConfirmAppointmentButtonWidget extends StatelessWidget {
           if (provider.isTimeSelected) {
             await BookAppointmentCubit.get(context).bookAppointment(
               bookAppointmentRepository: BookAppointmentFromFireBase(
-                  specialistDocId: specialistDocId,
+                  specialistDocId: dataEntity.specialistDocId,
                   appointmentEntity: AppointmentEntity(
                       specialistData: dataEntity,
                       selectedDate: provider.selectedDate.date,

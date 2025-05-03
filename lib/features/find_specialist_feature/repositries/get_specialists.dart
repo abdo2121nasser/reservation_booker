@@ -22,8 +22,9 @@ class GetAllSpecialistsFromFireBase implements GetSpecialistsRepository {
           .then((value) {
         List<SpecialistModel> specialists = [];
         for (var element in value.docs) {
-          SpecialistModel specialistModel =SpecialistModel.fromJson(docId: element.id,json: element.data());
-          specialists.add( _filterBookedTimes(specialistModel));
+          SpecialistModel specialistModel =
+              SpecialistModel.fromJson(docId: element.id, json: element.data());
+          specialists.add(_filterBookedTimes(specialistModel));
         }
         return specialists;
       });
@@ -47,8 +48,6 @@ class GetAllSpecialistsFromFireBase implements GetSpecialistsRepository {
     }
     return specialistModel;
   }
-
-
 }
 
 class GetSpecialistsFromHive implements GetSpecialistsRepository {
@@ -67,7 +66,8 @@ class GetSpecialistsFromHive implements GetSpecialistsRepository {
   }
 }
 
-class GetFilteredSpecialistsByCategoryFromHive implements GetSpecialistsRepository {
+class GetFilteredSpecialistsByCategoryFromHive
+    implements GetSpecialistsRepository {
   final String filteredCategory;
 
   GetFilteredSpecialistsByCategoryFromHive({required this.filteredCategory});
@@ -104,7 +104,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
           await getSpecialistsFromHive.getSpecialist();
       List<SpecialistEntity> filteredSpecialists = [];
       for (var element in specialists) {
-        if (element.data.name.toLowerCase().contains(filteredName.toLowerCase())) {
+        if (element.data.name
+            .toLowerCase()
+            .contains(filteredName.toLowerCase())) {
           filteredSpecialists.add(element);
         }
       }
@@ -435,5 +437,3 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //   ),
 //
 // ];
-
-

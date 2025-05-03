@@ -40,4 +40,8 @@ const String kTimeSection = 'Time Section';
 const String kConfirmAppointment = 'Confirm Appointment';
 
 const String kMyAppointmentCollection = 'my appointment collection';
+const String kMyAppointmentsBox = 'my appointments box';
+const String kMyAppointments = 'my appointments';
+
+
 

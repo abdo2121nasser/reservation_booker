@@ -19,20 +19,17 @@ class SpecialistEntityAdapter extends TypeAdapter<SpecialistEntity> {
     return SpecialistEntity(
       data: fields[0] as DataEntity,
       availableDates: (fields[1] as List).cast<AvailableDateEntity>(),
-      docId: fields[2] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, SpecialistEntity obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.data)
       ..writeByte(1)
-      ..write(obj.availableDates)
-      ..writeByte(2)
-      ..write(obj.docId);
+      ..write(obj.availableDates);
   }
 
   @override
@@ -57,6 +54,7 @@ class DataEntityAdapter extends TypeAdapter<DataEntity> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return DataEntity(
+      specialistDocId: fields[5] as String,
       name: fields[0] as String,
       category: fields[1] as String,
       rate: fields[2] as num,
@@ -68,7 +66,7 @@ class DataEntityAdapter extends TypeAdapter<DataEntity> {
   @override
   void write(BinaryWriter writer, DataEntity obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -78,7 +76,9 @@ class DataEntityAdapter extends TypeAdapter<DataEntity> {
       ..writeByte(3)
       ..write(obj.avatarUrl)
       ..writeByte(4)
-      ..write(obj.about);
+      ..write(obj.about)
+      ..writeByte(5)
+      ..write(obj.specialistDocId);
   }
 
   @override

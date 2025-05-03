@@ -19,11 +19,10 @@ class SpecialistDetailScreenBodyWidget extends StatelessWidget {
   final SpecialistEntity specialistEntity;
   final FindSpecialistCubit findSpecialistCubit;
 
-  const SpecialistDetailScreenBodyWidget({
-    super.key,
-    required this.specialistEntity,
-    required this.findSpecialistCubit
-  });
+  const SpecialistDetailScreenBodyWidget(
+      {super.key,
+      required this.specialistEntity,
+      required this.findSpecialistCubit});
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +37,16 @@ class SpecialistDetailScreenBodyWidget extends StatelessWidget {
               : const SizedBox.shrink(),
           isDateSelected(context)
               ? MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => BookAppointmentCubit(),
-              ),
-              BlocProvider.value(value: findSpecialistCubit),            ],
-            child: ConfirmAppointmentButtonWidget(
-              specialistDocId: specialistEntity.docId,
-              dataEntity: specialistEntity.data,
-            ),
-          )
-
+                  providers: [
+                    BlocProvider(
+                      create: (context) => BookAppointmentCubit(),
+                    ),
+                    BlocProvider.value(value: findSpecialistCubit),
+                  ],
+                  child: ConfirmAppointmentButtonWidget(
+                    dataEntity: specialistEntity.data,
+                  ),
+                )
               : const SizedBox.shrink(),
           SizedBox(
             height: k10V,
