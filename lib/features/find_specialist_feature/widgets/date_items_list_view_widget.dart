@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
+import 'package:provider/provider.dart';
+import 'package:reservation_booker/features/find_specialist_feature/widgets/specialist_detail_screen_body_widget.dart';
 
 import '../../../core/utils/values/app_size.dart';
+import '../screens/specialist_detail_screen.dart';
 import 'date_item_widget.dart';
 
 class DateItemsListViewWidget extends StatefulWidget {
   final List<AvailableDateEntity> availableDateEntity;
-  const DateItemsListViewWidget({super.key, required this.availableDateEntity,
+  const DateItemsListViewWidget({
+    super.key,
+    required this.availableDateEntity,
   });
 
   @override
@@ -32,14 +37,14 @@ class _DateItemsListViewWidgetState extends State<DateItemsListViewWidget> {
             padding: EdgeInsets.only(bottom: k14V),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => InkWell(
-              onTap: (){
-                _selectDate(index);
-              },
-              child: DateItemWidget(
+                  onTap: () {
+                    _selectDate(index, context);
+                  },
+                  child: DateItemWidget(
                     dateTime: widget.availableDateEntity[index].date,
-                isSelected: widget.availableDateEntity[index].isSelected,
+                    isSelected: widget.availableDateEntity[index].isSelected,
                   ),
-            ),
+                ),
             separatorBuilder: (context, index) => SizedBox(
                   width: k10H,
                 ),
@@ -48,7 +53,7 @@ class _DateItemsListViewWidgetState extends State<DateItemsListViewWidget> {
     );
   }
 
-  void _selectDate(int index) {
+  void _selectDate(int index, BuildContext context) {
     AvailableDateEntity? previouslySelected;
     for (var element in widget.availableDateEntity) {
       if (element.isSelected) {
@@ -60,7 +65,9 @@ class _DateItemsListViewWidgetState extends State<DateItemsListViewWidget> {
       previouslySelected.isSelected = false;
     }
     setState(() {
-      widget.availableDateEntity[index].isSelected=true;
+      widget.availableDateEntity[index].isSelected = true;
+      Provider.of<DateChangerNotifier>(context, listen: false)
+          .selectDate(date: widget.availableDateEntity[index]);
     });
   }
 

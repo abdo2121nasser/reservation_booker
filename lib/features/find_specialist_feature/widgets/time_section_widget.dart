@@ -18,7 +18,7 @@ class TimeSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: k16V, horizontal: k14H),
+      padding: EdgeInsets.only(left: k14H, right: k14H, bottom: k10V),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,11 +32,11 @@ class TimeSectionWidget extends StatelessWidget {
           SizedBox(
             height: k10V,
           ),
-          TimeItemsListViewWidget(availableTimes: availableTimes,)
+          TimeItemsListViewWidget(
+            availableTimes: availableTimes,
+          )
         ],
       ),
     );
   }
 }
-
-

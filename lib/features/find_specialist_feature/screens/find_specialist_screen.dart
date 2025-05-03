@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservation_booker/core/utils/colors/colors.dart';
 import 'package:reservation_booker/core/utils/values/font_size.dart';
 import 'package:reservation_booker/features/find_specialist_feature/cubits/find_specialist_cubit/find_specialist_cubit.dart';
-import 'package:reservation_booker/features/find_specialist_feature/repositries/get_specialists.dart';
 import 'package:provider/provider.dart';
 import '../../../core/utils/strings/strings.dart';
 import '../entities/category_entity.dart';
