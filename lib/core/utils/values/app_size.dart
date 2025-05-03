@@ -17,6 +17,7 @@ final double k1H = 1.w;
 final double k1_5H = 1.5.w;
 final double k2H = 2.w;
 final double k3H = 3.w;
+final double k4H = 4.w;
 final double k5H = 5.w;
 final double k10H = 10.w;
 final double k12H = 12.w;

@@ -42,13 +42,20 @@ var x = SpecialistEntity(
     AvailableDateEntity(
       date: DateTime(2025, 5, 2),
       availableTimes: [
-        DateTime(2025, 5, 2, 9, 0),
-        DateTime(2025, 5, 2, 10, 0),
-        DateTime(2025, 5, 2, 11, 0),
-        DateTime(2025, 5, 2, 13, 0),
-        DateTime(2025, 5, 2, 14, 0),
-        DateTime(2025, 5, 2, 15, 0),
-        DateTime(2025, 5, 2, 16, 0),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
+
+      ],
+    ),  AvailableDateEntity(
+      date: DateTime(2025, 6, 4),
+      availableTimes: [
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
+
       ],
     ),
   ],

@@ -67,18 +67,21 @@ class AvailableDateEntityAdapter extends TypeAdapter<AvailableDateEntity> {
     };
     return AvailableDateEntity(
       date: fields[0] as DateTime,
-      availableTimes: (fields[1] as List).cast<DateTime>(),
+      availableTimes: (fields[1] as List).cast<AvailableTimeEntity>(),
+      isSelected: fields[2] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, AvailableDateEntity obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.date)
       ..writeByte(1)
-      ..write(obj.availableTimes);
+      ..write(obj.availableTimes)
+      ..writeByte(2)
+      ..write(obj.isSelected);
   }
 
   @override
@@ -88,6 +91,43 @@ class AvailableDateEntityAdapter extends TypeAdapter<AvailableDateEntity> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AvailableDateEntityAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class AvailableTimeEntityAdapter extends TypeAdapter<AvailableTimeEntity> {
+  @override
+  final int typeId = 2;
+
+  @override
+  AvailableTimeEntity read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AvailableTimeEntity(
+      time: fields[0] as DateTime,
+      isSelected: fields[1] as bool,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AvailableTimeEntity obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.time)
+      ..writeByte(1)
+      ..write(obj.isSelected);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AvailableTimeEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

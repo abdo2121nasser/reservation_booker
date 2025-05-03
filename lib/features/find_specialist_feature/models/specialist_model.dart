@@ -39,13 +39,18 @@ class SpecialistModel extends SpecialistEntity {
 }
 
 class AvailableDateModel extends AvailableDateEntity {
-  AvailableDateModel({required super.date, required super.availableTimes});
+  AvailableDateModel({
+    required super.date,
+    required super.availableTimes,
+    super.isSelected = false,
+  });
+
   factory AvailableDateModel.fromJson(Map<String, dynamic> json) {
     return AvailableDateModel(
       date: (json['date'] as Timestamp).toDate(),
+      isSelected: json['isSelected'] ?? false,
       availableTimes: (json['availableTimes'] as List)
-          .map(
-              (e) => (e as Timestamp).toDate()) // Convert Timestamp to DateTime
+          .map((e) => AvailableTimeModel.fromJson(e))
           .toList(),
     );
   }
@@ -53,8 +58,31 @@ class AvailableDateModel extends AvailableDateEntity {
   Map<String, dynamic> toJson() {
     return {
       'date': Timestamp.fromDate(date),
-      'availableTimes':
-          availableTimes.map((e) => Timestamp.fromDate(e)).toList(),
+      'isSelected': isSelected,
+      'availableTimes': availableTimes
+          .map((e) => (e as AvailableTimeModel).toJson())
+          .toList(),
+    };
+  }
+}
+
+class AvailableTimeModel extends AvailableTimeEntity {
+  AvailableTimeModel({
+    required super.time,
+    required super.isSelected,
+  });
+
+  factory AvailableTimeModel.fromJson(Map<String, dynamic> json) {
+    return AvailableTimeModel(
+      time: (json['time'] as Timestamp).toDate(),
+      isSelected: json['isSelected'] ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'time': Timestamp.fromDate(time),
+      'isSelected': isSelected,
     };
   }
 }

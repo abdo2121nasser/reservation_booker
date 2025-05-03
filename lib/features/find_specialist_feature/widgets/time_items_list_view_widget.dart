@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
+import 'package:reservation_booker/features/find_specialist_feature/widgets/time_item_widget.dart';
 
 import '../../../core/utils/values/app_size.dart';
-import 'date_item_widget.dart';
+import '../entities/specialist_entity.dart';
 
-class DateItemsListViewWidget extends StatefulWidget {
-  final List<AvailableDateEntity> availableDateEntity;
-  const DateItemsListViewWidget({super.key, required this.availableDateEntity,
+class TimeItemsListViewWidget extends StatefulWidget {
+  final List<AvailableTimeEntity> availableTimes;
+  const TimeItemsListViewWidget({super.key,
+    required this.availableTimes
   });
 
   @override
-  State<DateItemsListViewWidget> createState() =>
-      _DateItemsListViewWidgetState();
+  _TimeItemsListViewWidgetState createState() =>
+      _TimeItemsListViewWidgetState();
 }
 
-class _DateItemsListViewWidgetState extends State<DateItemsListViewWidget> {
+class _TimeItemsListViewWidgetState extends State<TimeItemsListViewWidget> {
   final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: k110V,
+      height: k50V,
       child: Scrollbar(
         controller: _scrollController,
         radius: Radius.circular(k20R),
@@ -35,22 +36,21 @@ class _DateItemsListViewWidgetState extends State<DateItemsListViewWidget> {
               onTap: (){
                 _selectDate(index);
               },
-              child: DateItemWidget(
-                    dateTime: widget.availableDateEntity[index].date,
-                isSelected: widget.availableDateEntity[index].isSelected,
-                  ),
+              child: TimeItemWidget(isSelected: widget.availableTimes[index].isSelected),
             ),
             separatorBuilder: (context, index) => SizedBox(
-                  width: k10H,
-                ),
-            itemCount: widget.availableDateEntity.length),
+              width: k10H,
+            ),
+            itemCount: widget.availableTimes.length
+          // widget.availableDateEntity.length
+        ),
       ),
     );
   }
 
   void _selectDate(int index) {
-    AvailableDateEntity? previouslySelected;
-    for (var element in widget.availableDateEntity) {
+    AvailableTimeEntity? previouslySelected;
+    for (var element in widget.availableTimes) {
       if (element.isSelected) {
         previouslySelected = element;
         break;
@@ -60,7 +60,7 @@ class _DateItemsListViewWidgetState extends State<DateItemsListViewWidget> {
       previouslySelected.isSelected = false;
     }
     setState(() {
-      widget.availableDateEntity[index].isSelected=true;
+      widget.availableTimes[index].isSelected=true;
     });
   }
 

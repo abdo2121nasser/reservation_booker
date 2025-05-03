@@ -38,10 +38,23 @@ class AvailableDateEntity {
   final DateTime date;
 
   @HiveField(1)
-  final List<DateTime> availableTimes;
+  final List<AvailableTimeEntity> availableTimes;
+  @HiveField(2)
+  bool isSelected;
 
   AvailableDateEntity({
     required this.date,
     required this.availableTimes,
+    this.isSelected=false
   });
+}
+@HiveType(typeId: 2)
+class AvailableTimeEntity{
+  @HiveField(0)
+  final DateTime time;
+  @HiveField(1)
+   bool isSelected;
+
+  AvailableTimeEntity({required this.time, required this.isSelected});
+
 }

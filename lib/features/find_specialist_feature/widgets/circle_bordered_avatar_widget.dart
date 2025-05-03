@@ -18,7 +18,7 @@ class CircleBorderedAvatarWidget extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: k10H),
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(width: k4V, color: kWhiteColor)),
+          border: Border.all(width: k4H, color: kWhiteColor)),
       child: CustomCashedAvatarWidget(
           imageLink:
           'https://randomuser.me/api/portraits/men/52.jpg',
