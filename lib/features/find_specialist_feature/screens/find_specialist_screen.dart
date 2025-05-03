@@ -15,41 +15,46 @@ class FindSpecialistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ChangeCategoryNotifier(),
-      child: Column(
-        children: [
-          CustomSearchBar(),
-          const CategoryListViewWidget(),
-          BlocBuilder<FindSpecialistCubit, FindSpecialistState>(
-            builder: (context, state) {
-              if (state is LoadingState) {
-                return const Expanded(
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ));
-              } else if (state is SuccessState) {
-                if (state.specialists.isNotEmpty) {
-                  return SpecialContainerListViewWidget(
-                    specialists: state.specialists,
-                  );
-                } else {
-                  return Expanded(
+    return BlocProvider(
+      create: (context) =>
+      FindSpecialistCubit()
+        ..initializeCubit(),
+      child: ChangeNotifierProvider(
+        create: (context) => ChangeCategoryNotifier(),
+        child: Column(
+          children: [
+            CustomSearchBar(),
+            const CategoryListViewWidget(),
+            BlocBuilder<FindSpecialistCubit, FindSpecialistState>(
+              builder: (context, state) {
+                if (state is LoadingState) {
+                  return const Expanded(
                       child: Center(
-                          child: Text(
-                            'Couldn\'t find Specialist',
-                            style: TextStyle(
-                                color: kBlackColor,
-                                fontSize: k18Sp,
-                                fontWeight: FontWeight.bold),
-                          )));
+                        child: CircularProgressIndicator(),
+                      ));
+                } else if (state is SuccessState) {
+                  if (state.specialists.isNotEmpty) {
+                    return SpecialContainerListViewWidget(
+                      specialists: state.specialists,
+                    );
+                  } else {
+                    return Expanded(
+                        child: Center(
+                            child: Text(
+                              'Couldn\'t find Specialist',
+                              style: TextStyle(
+                                  color: kBlackColor,
+                                  fontSize: k18Sp,
+                                  fontWeight: FontWeight.bold),
+                            )));
+                  }
+                } else {
+                  return const SizedBox.shrink();
                 }
-              } else {
-                return const SizedBox.shrink();
-              }
-            },
-          ),
-        ],
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -58,7 +63,8 @@ class FindSpecialistScreen extends StatelessWidget {
 
 class ChangeCategoryNotifier extends ChangeNotifier {
 
-  CategoryEntity _selectedCategory = CategoryEntity(category: kCategoryAll, isSelected: true);
+  CategoryEntity _selectedCategory = CategoryEntity(
+      category: kCategoryAll, isSelected: true);
 
   CategoryEntity get selectedCategory => _selectedCategory;
 
@@ -68,7 +74,8 @@ class ChangeCategoryNotifier extends ChangeNotifier {
   }
 
   void resetToAll() {
-    _selectedCategory = CategoryEntity(category: kCategoryAll, isSelected: true);
+    _selectedCategory =
+        CategoryEntity(category: kCategoryAll, isSelected: true);
     notifyListeners();
   }
 }

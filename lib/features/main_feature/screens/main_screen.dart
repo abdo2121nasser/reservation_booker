@@ -20,14 +20,9 @@ class MainScreen extends StatelessWidget {
         appBar: const CustomAppBarWidget(),
         body: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarState>(
           builder: (context, state) {
-            return BlocProvider(
-                create: (context) =>
-                FindSpecialistCubit()
-                  ..initializeCubit(),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: k20H, vertical: k10V),
-                child: state.body,
-              ),
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: k20H, vertical: k10V),
+              child: state.body,
             );
           },
         ),

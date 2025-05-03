@@ -10,7 +10,7 @@ import '../../find_specialist_feature/models/specialist_model.dart';
 
 abstract class CancelAppointmentRepository {
   Future<void> cancelAppointment();
-  Future<void> cancelAppointmentReservation();
+  Future<void> cancelReservation();
 }
 
 class CancelAppointmentFromFireBase implements CancelAppointmentRepository {
@@ -37,7 +37,7 @@ class CancelAppointmentFromFireBase implements CancelAppointmentRepository {
   }
 
   @override
-  Future<void> cancelAppointmentReservation() async {
+  Future<void> cancelReservation() async {
     final docRef = FirebaseFirestore.instance
         .collection(kSpecialistCollection) // your collection
         .doc(appointmentModel.specialistData.specialistDocId);
@@ -51,7 +51,6 @@ class CancelAppointmentFromFireBase implements CancelAppointmentRepository {
           .firstWhere((time) =>
               time.time.isAtSameMomentAs(appointmentModel.selectedTime))
           .isBooked = false;
-
       await docRef.update(specialistModel.toJson());
     } on FirebaseException catch (e) {
       final failure = FirebaseFailure.fromFirebase(e);

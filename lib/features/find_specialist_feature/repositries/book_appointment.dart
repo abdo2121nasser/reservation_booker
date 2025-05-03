@@ -9,18 +9,16 @@ import '../../../core/utils/component/toast_message_function.dart';
 import '../entities/appointment_entity.dart';
 
 abstract class BookAppointmentRepository {
-  Future<void> book();
+  Future<void> bookAppointment();
   Future<void> reserveAppointment();
 }
 
 class BookAppointmentFromFireBase implements BookAppointmentRepository {
   final AppointmentEntity appointmentEntity;
-  final String specialistDocId;
 
-  BookAppointmentFromFireBase(
-      {required this.appointmentEntity, required this.specialistDocId});
+  BookAppointmentFromFireBase({required this.appointmentEntity});
   @override
-  Future<void> book() async {
+  Future<void> bookAppointment() async {
     try {
       AppointmentModel appointmentModel = AppointmentModel(
           specialistData: appointmentEntity.specialistData,
@@ -45,13 +43,14 @@ class BookAppointmentFromFireBase implements BookAppointmentRepository {
   Future<void> reserveAppointment() async {
     final docRef = FirebaseFirestore.instance
         .collection(kSpecialistCollection) // your collection
-        .doc(specialistDocId);
+        .doc(appointmentEntity.specialistData.specialistDocId);
     try {
       await FirebaseFirestore.instance.runTransaction((value) async {
         final snapshot = await value.get(docRef);
 
         SpecialistModel specialistModel = SpecialistModel.fromJson(
-            json: snapshot.data()!, docId: specialistDocId);
+            json: snapshot.data()!,
+            docId: appointmentEntity.specialistData.specialistDocId);
 
         int dateIndex = specialistModel.availableDates.indexWhere((date) =>
             date.date.isAtSameMomentAs(appointmentEntity.selectedDate));
