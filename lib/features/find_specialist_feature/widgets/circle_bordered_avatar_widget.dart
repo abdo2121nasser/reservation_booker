@@ -6,10 +6,11 @@ import 'custom_cashed_avatar_widget.dart';
 
 class CircleBorderedAvatarWidget extends StatelessWidget {
   final BoxConstraints constrains;
-
+ final String avatarUrl;
   const CircleBorderedAvatarWidget({
     super.key,
-    required this.constrains
+    required this.constrains,
+    required this.avatarUrl
   });
 
   @override
@@ -21,7 +22,7 @@ class CircleBorderedAvatarWidget extends StatelessWidget {
           border: Border.all(width: k4H, color: kWhiteColor)),
       child: CustomCashedAvatarWidget(
           imageLink:
-          'https://randomuser.me/api/portraits/men/52.jpg',
+          avatarUrl,
           constraints: constrains),
     );
   }

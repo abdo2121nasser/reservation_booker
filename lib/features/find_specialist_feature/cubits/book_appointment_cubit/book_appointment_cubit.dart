@@ -15,6 +15,7 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
       {required BookAppointmentRepository bookAppointmentRepository}) async {
     emit(BookAppointmentLoadingState());
    await bookAppointmentRepository.book();
+   await bookAppointmentRepository.reserveAppointment();
     emit(BookAppointmentSuccessState());
   }
 }

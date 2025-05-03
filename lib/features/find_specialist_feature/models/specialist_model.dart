@@ -6,10 +6,12 @@ class SpecialistModel extends SpecialistEntity {
   SpecialistModel({
     required super.data,
     required super.availableDates,
+    required super.docId
   });
 
-  factory SpecialistModel.fromJson(Map<String, dynamic> json) {
+  factory SpecialistModel.fromJson({required Map<String, dynamic> json,required String docId}) {
     return SpecialistModel(
+      docId: docId,
       data: DataEntity(
         name: json['name'],
         category: json[kCategory],
@@ -59,11 +61,9 @@ class AvailableDateModel extends AvailableDateEntity {
   Map<String, dynamic> toJson() {
     return {
       'date': Timestamp.fromDate(date),
-      'availableTimes': availableTimes
-          .map((e) {
-         return   AvailableTimeModel(time: e.time).toJson();
-          })
-          .toList(),
+      'availableTimes': availableTimes.map((e) {
+        return AvailableTimeModel(time: e.time,isBooked:e.isBooked).toJson();
+      }).toList(),
     };
   }
 }
@@ -71,18 +71,16 @@ class AvailableDateModel extends AvailableDateEntity {
 class AvailableTimeModel extends AvailableTimeEntity {
   AvailableTimeModel({
     required super.time,
+    required super.isBooked,
     super.isSelected,
   });
 
   factory AvailableTimeModel.fromJson(Map<String, dynamic> json) {
     return AvailableTimeModel(
-      time: (json['time'] as Timestamp).toDate(),
-    );
+        time: (json['time'] as Timestamp).toDate(), isBooked: json['isBooked']);
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'time': Timestamp.fromDate(time),
-    };
+    return {'time': Timestamp.fromDate(time), 'isBooked': isBooked};
   }
 }

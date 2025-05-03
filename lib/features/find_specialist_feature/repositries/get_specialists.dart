@@ -16,19 +16,13 @@ class GetAllSpecialistsFromFireBase implements GetSpecialistsRepository {
   @override
   Future<List<SpecialistEntity>> getSpecialist() async {
     try {
-      // specialists.forEach((element) async {
-      //   await FirebaseFirestore.instance
-      //       .collection(kSpecialistCollection)
-      //       .add(convertEntityToModel(element).toJson());
-      //
-      // });
       return await FirebaseFirestore.instance
           .collection(kSpecialistCollection)
           .get()
           .then((value) {
         List<SpecialistModel> specialists = [];
         for (var element in value.docs) {
-          specialists.add(SpecialistModel.fromJson(element.data()));
+          specialists.add(SpecialistModel.fromJson(docId: element.id,json: element.data()));
         }
         return specialists;
       });
@@ -45,6 +39,8 @@ class GetAllSpecialistsFromFireBase implements GetSpecialistsRepository {
       return [];
     }
   }
+
+
 }
 
 class GetSpecialistsFromHive implements GetSpecialistsRepository {
@@ -113,7 +109,15 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
   }
 }
 
-
+// List<SpecialistEntity> addAllSpecialists() {
+//   _specialists.forEach((element) async {
+//     await FirebaseFirestore.instance
+//         .collection(kSpecialistCollection)
+//         .add(_convertEntityToModel(element).toJson());
+//
+//   });
+//   return [];
+// }
 // SpecialistModel _convertEntityToModel(SpecialistEntity entity) {
 //   return SpecialistModel(
 //     data: DataEntity(
@@ -140,9 +144,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 4),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 4, 9, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 4, 10, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 4, 12, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 4, 9, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 4, 10, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 4, 12, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -159,9 +163,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 5),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 5, 11, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 5, 13, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 5, 15, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 5, 11, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 5, 13, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 5, 15, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -178,9 +182,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 6),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 6, 9, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 6, 10, 45)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 6, 14, 15)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 6, 9, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 6, 10, 45), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 6, 14, 15), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -199,9 +203,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 7),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 7, 10, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 7, 12, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 7, 13, 30)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 7, 10, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 7, 12, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 7, 13, 30), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -218,9 +222,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 8),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 8, 9, 15)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 8, 11, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 8, 16, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 8, 9, 15), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 8, 11, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 8, 16, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -237,9 +241,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 9),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 9, 10, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 9, 14, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 9, 15, 45)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 9, 10, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 9, 14, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 9, 15, 45), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -258,9 +262,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 10),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 10, 11, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 10, 12, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 10, 14, 30)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 10, 11, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 10, 12, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 10, 14, 30), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -277,9 +281,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 11),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 11, 9, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 11, 11, 15)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 11, 13, 45)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 11, 9, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 11, 11, 15), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 11, 13, 45), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -296,9 +300,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 12),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 12, 10, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 12, 12, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 12, 14, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 12, 10, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 12, 12, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 12, 14, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -317,9 +321,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 13),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 13, 9, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 13, 11, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 13, 15, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 13, 9, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 13, 11, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 13, 15, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -336,9 +340,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 14),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 14, 10, 15)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 14, 13, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 14, 14, 45)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 14, 10, 15), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 14, 13, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 14, 14, 45), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -357,9 +361,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 15),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 15, 8, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 15, 9, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 15, 11, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 15, 8, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 15, 9, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 15, 11, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -376,15 +380,13 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 16),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 16, 10, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 16, 12, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 16, 14, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 16, 7, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 16, 8, 15), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 16, 10, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
 //   ),
-//
-//   // Fitness (2)
 //   SpecialistEntity(
 //     data: DataEntity(
 //       name: 'Carlos Mendez',
@@ -397,9 +399,9 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 17),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 17, 9, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 17, 11, 0)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 17, 13, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 17, 9, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 17, 11, 0), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 17, 13, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
@@ -416,13 +418,14 @@ class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
 //       AvailableDateEntity(
 //         date: DateTime(2025, 5, 18),
 //         availableTimes: [
-//           AvailableTimeEntity(time: DateTime(2025, 5, 18, 10, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 18, 12, 30)),
-//           AvailableTimeEntity(time: DateTime(2025, 5, 18, 15, 0)),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 18, 10, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 18, 12, 30), isBooked: false),
+//           AvailableTimeEntity(time: DateTime(2025, 5, 18, 15, 0), isBooked: false),
 //         ],
 //       ),
 //     ],
 //   ),
+//
 // ];
 
 

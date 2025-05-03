@@ -49,4 +49,5 @@ class DateChangerNotifier extends ChangeNotifier {
 
   bool get isTimeSelected => _selectedTime != null;
   DateTime get selectedTime => _selectedTime!;
+
 }

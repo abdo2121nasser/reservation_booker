@@ -23,7 +23,7 @@ class SpecialistProfileSectionWidget extends StatelessWidget {
       child: LayoutBuilder(builder: (context, constrains) {
         return Row(
           children: [
-            CircleBorderedAvatarWidget(constrains: constrains,),
+            CircleBorderedAvatarWidget(constrains: constrains,avatarUrl: dataEntity.avatarUrl,),
             SpecialistInformationWidget(
               constraints: constrains,
               dataEntity: dataEntity,

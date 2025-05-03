@@ -19,6 +19,7 @@ class SpecialistContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
+        specialistEntity.availableDates=_resetDates(specialistEntity.availableDates);
         AppRoute.router.push(AppRoute.specialistDetailScreen,extra: specialistEntity);
       },
       child: Container(
@@ -54,5 +55,11 @@ class SpecialistContainerWidget extends StatelessWidget {
         }),
       ),
     );
+  }
+  List<AvailableDateEntity> _resetDates(List<AvailableDateEntity> date){
+    date.forEach((element){
+      element.isSelected=false;
+    });
+    return date;
   }
 }

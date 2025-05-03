@@ -14,9 +14,9 @@ import 'package:provider/provider.dart';
 
 class ConfirmAppointmentButtonWidget extends StatelessWidget {
   final DataEntity dataEntity;
-  const ConfirmAppointmentButtonWidget({
-    super.key,
-    required this.dataEntity
+  final String specialistDocId;
+  const ConfirmAppointmentButtonWidget({super.key, required this.dataEntity,
+  required this.specialistDocId
   });
 
   @override
@@ -24,13 +24,16 @@ class ConfirmAppointmentButtonWidget extends StatelessWidget {
     var provider = Provider.of<DateChangerNotifier>(context);
     return GeneralButtonWidget(
         label: kConfirmAppointment,
-        function: () async{
-          if(provider.isTimeSelected){
-            await BookAppointmentCubit.get(context).
-            bookAppointment(
-                bookAppointmentRepository: BookAppointmentFromFireBase(appointmentEntity: AppointmentEntity(specialistData: dataEntity,
-                    selectedDate: provider.selectedDate.date,
-                    selectedTime: provider.selectedTime)),);
+        function: () async {
+          if (provider.isTimeSelected) {
+            await BookAppointmentCubit.get(context).bookAppointment(
+              bookAppointmentRepository: BookAppointmentFromFireBase(
+                specialistDocId: specialistDocId,
+                  appointmentEntity: AppointmentEntity(
+                      specialistData: dataEntity,
+                      selectedDate: provider.selectedDate.date,
+                      selectedTime: provider.selectedTime)),
+            );
             AppRoute.router.pop();
           }
         },

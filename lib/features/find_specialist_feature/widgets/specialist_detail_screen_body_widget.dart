@@ -37,6 +37,7 @@ class SpecialistDetailScreenBodyWidget extends StatelessWidget {
               ? BlocProvider(
                   create: (context) => BookAppointmentCubit(),
                   child: ConfirmAppointmentButtonWidget(
+                     specialistDocId: specialistEntity.docId,
                     dataEntity: specialistEntity.data,
                   ),
                 )

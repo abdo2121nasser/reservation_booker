@@ -17,6 +17,7 @@ class DateSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: k16V, horizontal: k14H),
       child: Column(
@@ -35,4 +36,5 @@ class DateSectionWidget extends StatelessWidget {
       ),
     );
   }
+
 }

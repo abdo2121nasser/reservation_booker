@@ -19,17 +19,20 @@ class SpecialistEntityAdapter extends TypeAdapter<SpecialistEntity> {
     return SpecialistEntity(
       data: fields[0] as DataEntity,
       availableDates: (fields[1] as List).cast<AvailableDateEntity>(),
+      docId: fields[2] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, SpecialistEntity obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.data)
       ..writeByte(1)
-      ..write(obj.availableDates);
+      ..write(obj.availableDates)
+      ..writeByte(2)
+      ..write(obj.docId);
   }
 
   @override
@@ -102,20 +105,17 @@ class AvailableDateEntityAdapter extends TypeAdapter<AvailableDateEntity> {
     return AvailableDateEntity(
       date: fields[0] as DateTime,
       availableTimes: (fields[1] as List).cast<AvailableTimeEntity>(),
-      isSelected: fields[2] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, AvailableDateEntity obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.date)
       ..writeByte(1)
-      ..write(obj.availableTimes)
-      ..writeByte(2)
-      ..write(obj.isSelected);
+      ..write(obj.availableTimes);
   }
 
   @override
@@ -141,7 +141,7 @@ class AvailableTimeEntityAdapter extends TypeAdapter<AvailableTimeEntity> {
     };
     return AvailableTimeEntity(
       time: fields[0] as DateTime,
-      isSelected: fields[1] as bool,
+      isBooked: fields[1] as bool,
     );
   }
 
@@ -152,7 +152,7 @@ class AvailableTimeEntityAdapter extends TypeAdapter<AvailableTimeEntity> {
       ..writeByte(0)
       ..write(obj.time)
       ..writeByte(1)
-      ..write(obj.isSelected);
+      ..write(obj.isBooked);
   }
 
   @override

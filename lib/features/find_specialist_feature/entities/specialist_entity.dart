@@ -8,11 +8,14 @@ class SpecialistEntity {
   final DataEntity data;
 
   @HiveField(1)
-  final List<AvailableDateEntity> availableDates;
+   List<AvailableDateEntity> availableDates;
+  @HiveField(2)
+  final String docId;
 
   SpecialistEntity({
     required this.data,
     required this.availableDates,
+    required this.docId
   });
 }
 
@@ -48,9 +51,8 @@ class AvailableDateEntity {
   final DateTime date;
 
   @HiveField(1)
-   List<AvailableTimeEntity> availableTimes;
+  List<AvailableTimeEntity> availableTimes;
 
-  @HiveField(2)
   bool isSelected;
 
   AvailableDateEntity({
@@ -65,11 +67,13 @@ class AvailableTimeEntity {
   @HiveField(0)
   final DateTime time;
 
-  @HiveField(1)
   bool isSelected;
+  @HiveField(1)
+  bool isBooked;
 
   AvailableTimeEntity({
     required this.time,
+    required this.isBooked,
     this.isSelected = false,
   });
 }
