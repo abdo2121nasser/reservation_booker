@@ -46,3 +46,4 @@ const String kSpecialistDetailTitle = 'Back To Specialists';
 const String kAboutWord = 'About';
 const String kDateSection = 'Date Section';
 const String kTimeSection = 'Time Section';
+const String kConfirmAppointment = 'Confirm Appointment';

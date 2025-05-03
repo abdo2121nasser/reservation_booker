@@ -14,7 +14,7 @@ class SpecialistDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBarWidget(),
-      // take care there is 2 widgets with the same name file
+      // take care there is 2 widgets with the same name file app bar
       body: ChangeNotifierProvider(
         create: (context) => DateChangerNotifier(),
         child: SpecialistDetailScreenBodyWidget(
@@ -25,24 +25,24 @@ class SpecialistDetailScreen extends StatelessWidget {
 }
 
 class DateChangerNotifier extends ChangeNotifier {
-  // Track selected values
   AvailableDateEntity? _selectedDate;
   AvailableTimeEntity? _selectedTime;
 
   void selectDate({required AvailableDateEntity date}) {
     _selectedDate = date;
-    _selectedTime = null; // reset time selection
+    _selectedTime = null;
     notifyListeners();
   }
   AvailableDateEntity get selectedDate=>_selectedDate!;
   bool get isDateSelected =>_selectedDate!=null;
 
   void selectTime({required AvailableTimeEntity time}) {
-    // if (selectedDate == null) return;
-
     _selectedTime = time;
     notifyListeners();
   }
+  bool get isTimeSelected =>_selectedTime!=null;
+
+
 }
 
 

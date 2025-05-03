@@ -42,62 +42,53 @@ var x = SpecialistEntity(
     AvailableDateEntity(
       date: DateTime(2025, 5, 2),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),),
 
 
       ],
     ),  AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
 
       ],
     ),AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
 
       ],
     ),AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
 
       ],
     ),AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
 
       ],
     ),AvailableDateEntity(
       date: DateTime(2025, 6, 4),
       availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
-
-      ],
-    ),AvailableDateEntity(
-      date: DateTime(2025, 6, 4),
-      availableTimes: [
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0),isSelected: true),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0),isSelected: false),
-       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0),isSelected: false),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 9, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 1, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 4, 0)),
+       AvailableTimeEntity(time: DateTime(2025, 5, 2, 5, 0)),
 
       ],
     ),

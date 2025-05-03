@@ -55,6 +55,6 @@ class AvailableTimeEntity{
   @HiveField(1)
    bool isSelected;
 
-  AvailableTimeEntity({required this.time, required this.isSelected});
+  AvailableTimeEntity({required this.time, this.isSelected=false});
 
 }
