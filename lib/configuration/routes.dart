@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:go_router/go_router.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/extra_data_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/screens/specialist_detail_screen.dart';
 import 'package:reservation_booker/features/main_feature/screens/main_screen.dart';
 
@@ -25,9 +26,9 @@ class AppRoute {
     GoRoute(
       path: specialistDetailScreen,
       builder: (context, state) {
-        final SpecialistEntity specialist = state.extra as SpecialistEntity;
+        final ExtraDataEntity extraData = state.extra as ExtraDataEntity;
         return SpecialistDetailScreen(
-        specialistEntity: specialist,
+        extraDataEntity: extraData,
       );
       },
     ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reservation_booker/configuration/routes.dart';
+import 'package:reservation_booker/features/find_specialist_feature/cubits/find_specialist_cubit/find_specialist_cubit.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/extra_data_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/specialist_information_widget.dart';
 
@@ -20,7 +22,8 @@ class SpecialistContainerWidget extends StatelessWidget {
     return InkWell(
       onTap: (){
         specialistEntity.availableDates=_resetDates(specialistEntity.availableDates);
-        AppRoute.router.push(AppRoute.specialistDetailScreen,extra: specialistEntity);
+        AppRoute.router.push(AppRoute.specialistDetailScreen,extra:
+        ExtraDataEntity(specialistEntity: specialistEntity, findSpecialistCubit: FindSpecialistCubit.get(context)));
       },
       child: Container(
         width: double.maxFinite,

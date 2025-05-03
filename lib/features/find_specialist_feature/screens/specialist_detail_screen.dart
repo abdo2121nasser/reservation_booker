@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/extra_data_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/custom_app_bar_widget.dart';
 
@@ -6,9 +7,9 @@ import '../widgets/specialist_detail_screen_body_widget.dart';
 import 'package:provider/provider.dart';
 
 class SpecialistDetailScreen extends StatelessWidget {
-  final SpecialistEntity specialistEntity;
+  final ExtraDataEntity extraDataEntity;
 
-  const SpecialistDetailScreen({super.key, required this.specialistEntity});
+  const SpecialistDetailScreen({super.key, required this.extraDataEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,9 @@ class SpecialistDetailScreen extends StatelessWidget {
       body: ChangeNotifierProvider(
         create: (context) => DateChangerNotifier(),
         child: SpecialistDetailScreenBodyWidget(
-            specialistEntity: specialistEntity),
+            specialistEntity: extraDataEntity.specialistEntity,
+         findSpecialistCubit: extraDataEntity.findSpecialistCubit,
+        ),
       ),
     );
   }

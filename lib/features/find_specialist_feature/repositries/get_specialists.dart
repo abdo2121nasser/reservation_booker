@@ -22,7 +22,8 @@ class GetAllSpecialistsFromFireBase implements GetSpecialistsRepository {
           .then((value) {
         List<SpecialistModel> specialists = [];
         for (var element in value.docs) {
-          specialists.add(SpecialistModel.fromJson(docId: element.id,json: element.data()));
+          SpecialistModel specialistModel =SpecialistModel.fromJson(docId: element.id,json: element.data());
+          specialists.add( _filterBookedTimes(specialistModel));
         }
         return specialists;
       });
@@ -38,6 +39,13 @@ class GetAllSpecialistsFromFireBase implements GetSpecialistsRepository {
       showToastMessage(message: kUnknownErrorMessage);
       return [];
     }
+  }
+
+  SpecialistModel _filterBookedTimes(SpecialistModel specialistModel) {
+    for (AvailableDateEntity date in specialistModel.availableDates) {
+      date.availableTimes.removeWhere((time) => time.isBooked == true);
+    }
+    return specialistModel;
   }
 
 
