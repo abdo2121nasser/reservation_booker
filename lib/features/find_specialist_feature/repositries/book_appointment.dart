@@ -60,7 +60,6 @@ class BookAppointmentFromFireBase implements BookAppointmentRepository {
             .firstWhere((time) =>
                 time.time.isAtSameMomentAs(appointmentEntity.selectedTime))
             .isBooked = true;
-
         value.update(docRef, specialistModel.toJson());
       });
     } on FirebaseException catch (e) {
