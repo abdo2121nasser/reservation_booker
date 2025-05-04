@@ -56,7 +56,7 @@ class GetAllAppointmentsFromHive implements GetAppointmentRepository {
       List<AppointmentEntity> myAppointments =
           box.get(kMyAppointments, defaultValue: []).cast<AppointmentEntity>();
 
-      return _filterAppointments(appointments:myAppointments);
+      return _filterAppointments(appointments: myAppointments);
     } catch (error) {
       debugPrint(error.toString());
       showToastMessage(message: kUnknownErrorMessage);

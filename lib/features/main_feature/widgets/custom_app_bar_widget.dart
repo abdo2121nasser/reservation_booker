@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reservation_booker/configuration/routes.dart';
 
 import '../cubits/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
 import '../../../core/utils/colors/colors.dart';
@@ -21,7 +23,10 @@ class CustomAppBarWidget extends StatelessWidget implements PreferredSizeWidget 
         return AppBar(
           actions:  [
             IconButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  AppRoute.router.pushReplacement(AppRoute.authenticationScreen);
+                },
                 icon: const Icon(
                   Icons.logout,
                   color: kLightGreyColor,
