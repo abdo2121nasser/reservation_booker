@@ -13,10 +13,15 @@ class AppointmentEntity {
 
   @HiveField(2)
   final DateTime selectedTime;
+  @HiveField(3)
+  final String? docId;
+
+
 
   AppointmentEntity({
     required this.specialistData,
     required this.selectedDate,
     required this.selectedTime,
+    this.docId
   });
 }

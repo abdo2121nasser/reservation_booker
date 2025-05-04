@@ -4,12 +4,11 @@ import 'package:reservation_booker/features/find_specialist_feature/entities/spe
 import '../entities/appointment_entity.dart';
 
 class AppointmentModel extends AppointmentEntity {
-  final String docId;
-  AppointmentModel({
+  AppointmentModel( {
     required super.specialistData,
     required super.selectedDate,
     required super.selectedTime,
-    this.docId=''
+     super.docId
   });
 
   factory AppointmentModel.fromJson({required Map<String, dynamic> json,required String docId}) {

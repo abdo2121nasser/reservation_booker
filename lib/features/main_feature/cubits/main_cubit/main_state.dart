@@ -9,10 +9,14 @@ class LoadingState extends MainState
     implements
         FindSpecialistState,
         BookAppointmentState,
-        GetMyAppointmentsState {}
+        GetMyAppointmentsState,
+        CancelMyAppointmentsState {}
 
 class SuccessState<T> extends MainState
-    implements FindSpecialistState, GetMyAppointmentsState {
+    implements
+        FindSpecialistState,
+        GetMyAppointmentsState,
+        CancelMyAppointmentsState {
   final T data;
   SuccessState({required this.data});
 }

@@ -29,7 +29,7 @@ class MyAppointmentContainerWidget extends StatelessWidget {
           children: [
             MyAppointmentTitleSectionWidget(
               constrains: constrain,
-              dataEntity: myAppointment.specialistData,
+              myAppointment: myAppointment,
             ),
             MyAppointmentDateSectionWidget(myAppointment: myAppointment,),
             MyAppointmentButtonSection(selectedTime: myAppointment.selectedTime,)

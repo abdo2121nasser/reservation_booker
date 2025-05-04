@@ -21,10 +21,10 @@ class GetAllAppointmentsFromFireBase implements GetAppointmentRepository {
           .get()
           .then((value) {
         List<AppointmentModel> appointments = [];
-        value.docs.forEach((element) {
+        for (var element in value.docs) {
           appointments.add(AppointmentModel.fromJson(
               docId: element.id, json: element.data()));
-        });
+        }
 
         return appointments;
       });

@@ -20,19 +20,22 @@ class AppointmentEntityAdapter extends TypeAdapter<AppointmentEntity> {
       specialistData: fields[0] as DataEntity,
       selectedDate: fields[1] as DateTime,
       selectedTime: fields[2] as DateTime,
+      docId: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, AppointmentEntity obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.specialistData)
       ..writeByte(1)
       ..write(obj.selectedDate)
       ..writeByte(2)
-      ..write(obj.selectedTime);
+      ..write(obj.selectedTime)
+      ..writeByte(3)
+      ..write(obj.docId);
   }
 
   @override

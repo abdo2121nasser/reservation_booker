@@ -10,7 +10,6 @@ class MyAppointmentScreenBodyWidget extends StatelessWidget {
   const MyAppointmentScreenBodyWidget({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Column(
