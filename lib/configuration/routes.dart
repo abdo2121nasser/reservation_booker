@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/extra_data_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/screens/specialist_detail_screen.dart';
@@ -12,25 +13,27 @@ class AppRoute {
   static const mainScreen = '/main-screen';
   static const specialistDetailScreen = '/specialist-detail-screen';
 
-  static final router =
-      GoRouter(initialLocation: authenticationScreen, routes: [
-    GoRoute(
-      path: authenticationScreen,
-      builder: (context, state) => const AuthenticationScreen(),
-    ),
-    GoRoute(
-      path: mainScreen,
-      builder: (context, state) => const MainScreen(),
-    ),
-    GoRoute(
-      path: specialistDetailScreen,
-      builder: (context, state) {
-        final ExtraDataEntity extraData = state.extra as ExtraDataEntity;
-        return SpecialistDetailScreen(
-        extraDataEntity: extraData,
-      );
-      },
-    ),
-  ]);
+  static final router = GoRouter(
+      initialLocation: FirebaseAuth.instance.currentUser == null
+          ? authenticationScreen
+          : mainScreen,
+      routes: [
+        GoRoute(
+          path: authenticationScreen,
+          builder: (context, state) => const AuthenticationScreen(),
+        ),
+        GoRoute(
+          path: mainScreen,
+          builder: (context, state) => const MainScreen(),
+        ),
+        GoRoute(
+          path: specialistDetailScreen,
+          builder: (context, state) {
+            final ExtraDataEntity extraData = state.extra as ExtraDataEntity;
+            return SpecialistDetailScreen(
+              extraDataEntity: extraData,
+            );
+          },
+        ),
+      ]);
 }
-

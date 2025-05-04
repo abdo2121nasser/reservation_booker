@@ -22,7 +22,12 @@ class SignInButtonWidget extends StatelessWidget {
         builder: (authenticationContext, authenticationCubitState) {
           var formState = authenticationCubitState.authenticationState.form
               as SignInFormWidget;
-          return BlocBuilder<SignInCubit, SignInState>(
+          return BlocConsumer<SignInCubit, SignInState>(
+              listener: (context, state) {
+                if(state is SignInSuccessState){
+                  AppRoute.router.pushReplacement(AppRoute.mainScreen);
+                }
+              },
             builder: (context, state) {
               if (state is SignInLoadingState) {
                 return const Center(
