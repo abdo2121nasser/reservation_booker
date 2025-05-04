@@ -1,25 +1,22 @@
 part of 'get_my_appointments_cubit.dart';
 
 @immutable
-sealed class GetMyAppointmentsState {}
+abstract class GetMyAppointmentsState extends MainState {}
 
 final class GetMyAppointmentsInitial extends GetMyAppointmentsState {}
 
-final class LoadingState extends GetMyAppointmentsState {}
-
-final class SuccessState extends GetMyAppointmentsState {
-  final List<AppointmentEntity> myAppointments;
-  SuccessState({required this.myAppointments});
-}
-
 final class InitializeCubitLoadingState extends LoadingState {}
 
-final class InitializeCubitSuccessState extends SuccessState {
-  InitializeCubitSuccessState({required super.myAppointments});
+final class InitializeCubitSuccessState
+    extends SuccessState<List<AppointmentEntity>> {
+  InitializeCubitSuccessState({required List<AppointmentEntity> myAppointments})
+      : super(data: myAppointments);
 }
 
 final class GetAppointmentLoadingState extends LoadingState {}
 
-final class GetAppointmentSuccessState extends SuccessState {
-  GetAppointmentSuccessState({required super.myAppointments});
+final class GetAppointmentSuccessState
+    extends SuccessState<List<AppointmentEntity>> {
+  GetAppointmentSuccessState({required List<AppointmentEntity> myAppointments})
+      : super(data: myAppointments);
 }

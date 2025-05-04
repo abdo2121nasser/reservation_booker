@@ -5,11 +5,12 @@ import 'package:reservation_booker/features/find_specialist_feature/entities/app
 import 'package:reservation_booker/features/my_appointments_feature/repositories/store_my_appointments_repository.dart';
 import 'package:reservation_booker/features/my_appointments_feature/screens/my_appointments_screen.dart';
 
+import '../../../main_feature/cubits/main_cubit/main_cubit.dart';
 import '../../repositories/get_appointment_repository.dart';
 
 part 'get_my_appointments_state.dart';
 
-class GetMyAppointmentsCubit extends Cubit<GetMyAppointmentsState> {
+class GetMyAppointmentsCubit extends MainCubit<GetMyAppointmentsState> {
   GetMyAppointmentsCubit() : super(GetMyAppointmentsInitial());
   static GetMyAppointmentsCubit get(context) => BlocProvider.of(context);
   void initializeCubit() async {
