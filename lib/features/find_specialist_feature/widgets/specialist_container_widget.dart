@@ -43,11 +43,11 @@ class SpecialistContainerWidget extends StatelessWidget {
         ),
         child: LayoutBuilder(builder: (context, constrain) {
           return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CustomCashedAvatarWidget(
                 imageLink: specialistEntity.data.avatarUrl,
-                constraints: constrain,
+                constrains: constrain,
               ),
               SizedBox(width: k10H,),
               SpecialistInformationWidget(

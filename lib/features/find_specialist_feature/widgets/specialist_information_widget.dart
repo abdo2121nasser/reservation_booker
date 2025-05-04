@@ -8,37 +8,48 @@ import '../../../core/utils/values/font_size.dart';
 class SpecialistInformationWidget extends StatelessWidget {
   final BoxConstraints constraints;
   final DataEntity dataEntity;
-    final bool isBigSize;
-  const SpecialistInformationWidget({
-    super.key,
-    required this.constraints,
-    required this.dataEntity,
-    this.isBigSize=false
-  });
+  final bool isBigSize;
+  const SpecialistInformationWidget(
+      {super.key,
+      required this.constraints,
+      required this.dataEntity,
+      this.isBigSize = false});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Flexible(
       // width: constraints.maxWidth*0.7,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(
-           dataEntity.name,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize:isBigSize?k25Sp: k16Sp,
-                color: kBlackColor),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Text(
+                dataEntity.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: isBigSize ? k25Sp : k16Sp,
+                    color: kBlackColor),
+              ),
+              Text(
+                dataEntity.category,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    fontSize: isBigSize ? k20Sp : k14Sp, color: kLightGreyColor),
+              ),
+            ],
           ),
-          Text(
-            dataEntity.category,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: isBigSize?k20Sp:k14Sp, color: kLightGreyColor),
+
+          SpecialistRateWidget(
+            rate: dataEntity.rate.floor(),
           ),
-          const Spacer(),
-           SpecialistRateWidget(rate: dataEntity.rate.floor(),),
-          const Spacer()
         ],
       ),
     );

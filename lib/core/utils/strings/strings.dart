@@ -43,5 +43,7 @@ const String kMyAppointmentCollection = 'my appointment collection';
 const String kMyAppointmentsBox = 'my appointments box';
 const String kMyAppointments = 'my appointments';
 
+const String kRescheduleWord = 'Reschedule';
+
 
 

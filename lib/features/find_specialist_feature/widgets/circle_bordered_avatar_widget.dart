@@ -23,7 +23,7 @@ class CircleBorderedAvatarWidget extends StatelessWidget {
       child: CustomCashedAvatarWidget(
           imageLink:
           avatarUrl,
-          constraints: constrains),
+          constrains: constrains),
     );
   }
 }

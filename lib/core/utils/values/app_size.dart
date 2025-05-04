@@ -12,6 +12,7 @@ final double k50V = 50.h;
 final double k60V =60.h;
 final double k90V =90.h;
 final double k110V =110.h;
+final double k120V =200.h;
 
 final double k1H = 1.w;
 final double k1_5H = 1.5.w;

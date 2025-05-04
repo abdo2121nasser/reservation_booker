@@ -6,16 +6,16 @@ import '../../../core/utils/strings/strings.dart';
 
 class CustomCashedAvatarWidget extends StatelessWidget {
   final String imageLink;
-  final BoxConstraints constraints;
+  final BoxConstraints constrains;
   const CustomCashedAvatarWidget({super.key,
   required this.imageLink,
-    required this.constraints
+    required this.constrains
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: constraints.maxWidth*0.25,
+      width: constrains.maxWidth*0.25,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(k100R),
         child:  GeneralImageCacheBlock(link: imageLink),
