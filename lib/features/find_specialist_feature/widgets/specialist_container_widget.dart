@@ -23,7 +23,8 @@ class SpecialistContainerWidget extends StatelessWidget {
       onTap: (){
         specialistEntity.availableDates=_resetDates(specialistEntity.availableDates);
         AppRoute.router.push(AppRoute.specialistDetailScreen,extra:
-        ExtraDataEntity(specialistEntity: specialistEntity, findSpecialistCubit: FindSpecialistCubit.get(context)));
+        ExtraDataEntity(specialistEntity: specialistEntity,
+            findSpecialistCubit: FindSpecialistCubit.get(context)));
       },
       child: Container(
         width: double.maxFinite,

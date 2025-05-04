@@ -19,8 +19,7 @@ class SpecialistDetailScreen extends StatelessWidget {
       body: ChangeNotifierProvider(
         create: (context) => DateChangerNotifier(),
         child: SpecialistDetailScreenBodyWidget(
-            specialistEntity: extraDataEntity.specialistEntity,
-         findSpecialistCubit: extraDataEntity.findSpecialistCubit,
+         extraDataEntity: extraDataEntity,
         ),
       ),
     );

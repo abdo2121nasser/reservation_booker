@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/repositries/store_specialists.dart';
+import 'package:reservation_booker/features/main_feature/cubits/main_cubit/main_cubit.dart';
 
 import '../../repositries/get_specialists.dart';
 
 part 'find_specialist_state.dart';
 
-class FindSpecialistCubit extends Cubit<FindSpecialistState> {
+class FindSpecialistCubit extends MainCubit<FindSpecialistState> {
   FindSpecialistCubit() : super(FindSpecialistInitial());
   static FindSpecialistCubit get(context) => BlocProvider.of(context);
 

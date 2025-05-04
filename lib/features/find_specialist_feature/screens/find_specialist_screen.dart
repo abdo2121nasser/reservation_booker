@@ -4,7 +4,9 @@ import 'package:reservation_booker/core/utils/colors/colors.dart';
 import 'package:reservation_booker/core/utils/values/font_size.dart';
 import 'package:reservation_booker/features/find_specialist_feature/cubits/find_specialist_cubit/find_specialist_cubit.dart';
 import 'package:provider/provider.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/specialist_entity.dart';
 import '../../../core/utils/strings/strings.dart';
+import '../../main_feature/cubits/main_cubit/main_cubit.dart';
 import '../entities/category_entity.dart';
 import '../widgets/category_list_view_widget.dart';
 import '../widgets/custom_search_bar_widget.dart';
@@ -16,9 +18,7 @@ class FindSpecialistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      FindSpecialistCubit()
-        ..initializeCubit(),
+      create: (context) => FindSpecialistCubit()..initializeCubit(),
       child: ChangeNotifierProvider(
         create: (context) => ChangeCategoryNotifier(),
         child: Column(
@@ -32,10 +32,10 @@ class FindSpecialistScreen extends StatelessWidget {
                       child: Center(
                         child: CircularProgressIndicator(),
                       ));
-                } else if (state is SuccessState) {
-                  if (state.specialists.isNotEmpty) {
+                } else if (state is SuccessState<List<SpecialistEntity>>) {
+                  if (state.data.isNotEmpty) {
                     return SpecialContainerListViewWidget(
-                      specialists: state.specialists,
+                      specialists: state.data,
                     );
                   } else {
                     return Expanded(
