@@ -18,7 +18,7 @@ class MyAppointmentContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: k10H, vertical: k10V),
-      height: k120V,
+      height: k210V,
       decoration: BoxDecoration(
           color: kWhiteColor, borderRadius: BorderRadius.circular(k10R)),
       child: LayoutBuilder(builder: (context, constrain) {
