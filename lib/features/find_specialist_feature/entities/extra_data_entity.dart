@@ -6,10 +6,10 @@ import '../../main_feature/cubits/main_cubit/main_cubit.dart';
 
 class ExtraDataEntity{
   final SpecialistEntity specialistEntity;
-  final FindSpecialistCubit? findSpecialistCubit;
+  final MainCubit? mainCubit;
   final AppointmentEntity? oldAppointment;
 
-  ExtraDataEntity({required this.specialistEntity, this.findSpecialistCubit,
+  ExtraDataEntity({required this.specialistEntity, this.mainCubit,
   this.oldAppointment
   });
 

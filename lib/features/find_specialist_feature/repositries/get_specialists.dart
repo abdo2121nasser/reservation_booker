@@ -92,6 +92,47 @@ class GetFilteredSpecialistsByCategoryFromHive
   }
 }
 
+class GetFilteredSpecialistsByDocIdFromFireBase
+    implements GetSpecialistsRepository {
+  final String specialistDocId;
+
+  GetFilteredSpecialistsByDocIdFromFireBase({required this.specialistDocId});
+
+  @override
+  Future<List<SpecialistEntity>> getSpecialist() async {
+    try {
+      return await FirebaseFirestore.instance
+          .collection(kSpecialistCollection)
+          .doc(specialistDocId)
+          .get()
+          .then((doc) {
+        final SpecialistModel specialistModel = _filterBookedTimes(SpecialistModel.fromJson(
+          docId: doc.id,
+          json: doc.data()!,
+        ));
+
+        return [specialistModel];
+      });
+    } on FirebaseException catch (e) {
+      final failure = FirebaseFailure.fromFirebase(e);
+      debugPrint(failure.devMessage);
+      showToastMessage(message: failure.userMessage);
+      return [];
+    } catch (error) {
+      debugPrint(error.toString());
+      showToastMessage(message: kUnknownErrorMessage);
+      return [];
+    }
+}
+  SpecialistModel _filterBookedTimes(SpecialistModel specialistModel) {
+    for (AvailableDateEntity date in specialistModel.availableDates) {
+      date.availableTimes.removeWhere((time) => time.isBooked == true);
+    }
+    return specialistModel;
+  }
+
+}
+
 class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {
   final String filteredName;
 

@@ -24,7 +24,7 @@ class SpecialistContainerWidget extends StatelessWidget {
         specialistEntity.availableDates=_resetDates(specialistEntity.availableDates);
         AppRoute.router.push(AppRoute.specialistDetailScreen,extra:
         ExtraDataEntity(specialistEntity: specialistEntity,
-            findSpecialistCubit: FindSpecialistCubit.get(context)));
+            mainCubit: FindSpecialistCubit.get(context)));
       },
       child: Container(
         width: double.maxFinite,

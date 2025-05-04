@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservation_booker/features/find_specialist_feature/entities/extra_data_entity.dart';
 import 'package:reservation_booker/features/find_specialist_feature/widgets/reschedule_appointment_button_widget.dart';
+import 'package:reservation_booker/features/my_appointments_feature/cubits/cancel_my_appointments_cubit/cancel_my_appointments_cubit.dart';
 
 import '../cubits/book_appointment_cubit/book_appointment_cubit.dart';
 import '../cubits/find_specialist_cubit/find_specialist_cubit.dart';
@@ -17,12 +18,13 @@ class ConfirmAppointmentButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (extraDataEntity.oldAppointment == null &&
-        extraDataEntity.findSpecialistCubit != null) {
+        extraDataEntity.mainCubit != null) {
       //only book appointment
       return MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => BookAppointmentCubit()),
-          BlocProvider.value(value: extraDataEntity.findSpecialistCubit!)
+          BlocProvider.value(
+              value: extraDataEntity.mainCubit! as FindSpecialistCubit)
         ],
         child: BookAppointmentButtonWidget(
             dataEntity: extraDataEntity.specialistEntity.data),
@@ -32,9 +34,8 @@ class ConfirmAppointmentButtonWidget extends StatelessWidget {
       return MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => BookAppointmentCubit()),
-          BlocProvider(
-              create: (context) =>
-                  FindSpecialistCubit()), //to update the stored specialist list in hive from firebase
+          BlocProvider.value(value: extraDataEntity.mainCubit!
+                  as CancelMyAppointmentsCubit), //to update the stored specialist list in hive from firebase
         ],
         child: RescheduleAppointmentButtonWidget(
           extraDataEntity: extraDataEntity,

@@ -26,7 +26,6 @@ class SpecialistDetailScreenBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(extraDataEntity.findSpecialistCubit.runtimeType);
     return SingleChildScrollView(
       child: Column(
         children: [

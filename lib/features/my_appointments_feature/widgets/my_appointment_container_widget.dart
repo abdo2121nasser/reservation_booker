@@ -32,7 +32,7 @@ class MyAppointmentContainerWidget extends StatelessWidget {
               myAppointment: myAppointment,
             ),
             MyAppointmentDateSectionWidget(myAppointment: myAppointment,),
-            MyAppointmentButtonSection(selectedTime: myAppointment.selectedTime,)
+            MyAppointmentButtonSection(myAppointment: myAppointment,)
           ],
         );
       }),
