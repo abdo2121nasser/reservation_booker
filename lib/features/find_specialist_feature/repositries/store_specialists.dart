@@ -17,7 +17,7 @@ class StoreSpecialistsUsingHive implements StoreSpecialistsRepository {
   Future<void> storeSpecialist({required List<SpecialistEntity> specialists}) async {
     try {
       var box =  Hive.box(kSpecialistBox);
-      box.clear();
+    await  box.clear();
      await box.put(kSpecialists, specialists);
 
     } catch (error) {

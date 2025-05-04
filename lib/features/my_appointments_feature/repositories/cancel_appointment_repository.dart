@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../core/services/failure_service.dart';
@@ -19,8 +20,11 @@ class CancelAppointmentFromFireBase implements CancelAppointmentRepository {
   CancelAppointmentFromFireBase({required this.appointmentModel});
   @override
   Future<void> cancelAppointment() async {
+    final String userDocId = FirebaseAuth.instance.currentUser!.uid;
     try {
       await FirebaseFirestore.instance
+          .collection(kUserCollection)
+          .doc(userDocId)
           .collection(kMyAppointmentCollection)
           .doc(appointmentModel.docId)
           .delete();

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:reservation_booker/core/utils/strings/strings.dart';
@@ -15,8 +16,11 @@ abstract class GetAppointmentRepository {
 class GetAllAppointmentsFromFireBase implements GetAppointmentRepository {
   @override
   Future<List<AppointmentEntity>> getAppointments() async {
+    final String userDocId=FirebaseAuth.instance.currentUser!.uid;
+
     try {
      return await FirebaseFirestore.instance
+     .collection(kUserCollection).doc(userDocId)
           .collection(kMyAppointmentCollection)
           .get()
           .then((value) {

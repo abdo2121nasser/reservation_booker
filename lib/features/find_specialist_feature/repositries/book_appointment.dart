@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:reservation_booker/core/services/failure_service.dart';
 import 'package:reservation_booker/core/utils/strings/strings.dart';
@@ -19,12 +20,16 @@ class BookAppointmentFromFireBase implements BookAppointmentRepository {
   BookAppointmentFromFireBase({required this.appointmentEntity});
   @override
   Future<void> bookAppointment() async {
+    AppointmentModel appointmentModel = AppointmentModel(
+        specialistData: appointmentEntity.specialistData,
+        selectedDate: appointmentEntity.selectedDate,
+        selectedTime: appointmentEntity.selectedTime);
+    final String userDocId = FirebaseAuth.instance.currentUser!.uid;
+
     try {
-      AppointmentModel appointmentModel = AppointmentModel(
-          specialistData: appointmentEntity.specialistData,
-          selectedDate: appointmentEntity.selectedDate,
-          selectedTime: appointmentEntity.selectedTime);
       FirebaseFirestore.instance
+          .collection(kUserCollection)
+          .doc(userDocId)
           .collection(kMyAppointmentCollection)
           .add(appointmentModel.toJson());
     } on FirebaseException catch (e) {
