@@ -15,7 +15,7 @@ class StoreMyAppointmentsUsingHive implements StoreMyAppointmentsRepository{
   Future<void> storeMyAppointments({required List<AppointmentEntity> appointments}) async {
     try {
       var box =  Hive.box(kMyAppointmentsBox);
-      box.clear();
+     await box.clear();
       await box.put(kMyAppointments, appointments);
 
     } catch (error) {

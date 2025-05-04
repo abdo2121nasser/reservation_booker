@@ -2,13 +2,16 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../core/utils/colors/colors.dart';
 import '../../../core/utils/values/app_size.dart';
+import '../../find_specialist_feature/entities/appointment_entity.dart';
 import 'my_appointment_button_section.dart';
 import 'my_appointment_date_section_widget.dart';
 import 'my_appointment_title_section_widget.dart';
 
 class MyAppointmentContainerWidget extends StatelessWidget {
+  final AppointmentEntity myAppointment;
   const MyAppointmentContainerWidget({
     super.key,
+    required this.myAppointment
   });
 
   @override
@@ -26,9 +29,10 @@ class MyAppointmentContainerWidget extends StatelessWidget {
           children: [
             MyAppointmentTitleSectionWidget(
               constrains: constrain,
+              dataEntity: myAppointment.specialistData,
             ),
-            MyAppointmentDateSectionWidget(),
-            MyAppointmentButtonSection()
+            MyAppointmentDateSectionWidget(myAppointment: myAppointment,),
+            MyAppointmentButtonSection(selectedTime: myAppointment.selectedTime,)
           ],
         );
       }),

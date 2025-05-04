@@ -11,10 +11,21 @@ class MyAppointmentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetMyAppointmentsCubit()
-        // ..initializeCubit()
+      create: (context) =>
+      GetMyAppointmentsCubit()
+        ..initializeCubit()
       ,
-      child: MyAppointmentScreenBodyWidget(),
+      child: BlocBuilder<GetMyAppointmentsCubit, GetMyAppointmentsState>(
+        builder: (context, state) {
+          if(state is LoadingState)
+          {
+          return  const Center(child: CircularProgressIndicator(),);
+          }
+          else{
+            return const MyAppointmentScreenBodyWidget();
+          }
+        },
+      ),
     );
   }
 }

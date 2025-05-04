@@ -4,10 +4,13 @@ import 'package:reservation_booker/core/utils/colors/colors.dart';
 import 'package:reservation_booker/core/utils/values/app_size.dart';
 import 'package:reservation_booker/core/utils/values/font_size.dart';
 import 'package:intl/intl.dart';
+import 'package:reservation_booker/features/find_specialist_feature/entities/appointment_entity.dart';
 
 class MyAppointmentDateSectionWidget extends StatelessWidget {
+  final AppointmentEntity myAppointment;
   const MyAppointmentDateSectionWidget({
     super.key,
+    required this.myAppointment
   });
 
   @override
@@ -26,7 +29,7 @@ class MyAppointmentDateSectionWidget extends StatelessWidget {
                 width: k10H,
               ),
               Text(
-                DateFormat('EEEE, MMMM dd, yyyy').format(DateTime.now()),
+                DateFormat('EEEE, MMMM dd, yyyy').format(myAppointment.selectedDate),
                 style: TextStyle(
                   fontSize: k16Sp,
                 ),
@@ -46,7 +49,7 @@ class MyAppointmentDateSectionWidget extends StatelessWidget {
                 width: k10H,
               ),
               Text(
-                DateFormat('h:mm a').format(DateTime.now()),
+                DateFormat('h:mm a').format(myAppointment.selectedTime),
                 style: TextStyle(
                   fontSize: k16Sp,
                 ),

@@ -26,12 +26,13 @@ class GetMyAppointmentsCubit extends Cubit<GetMyAppointmentsState> {
       emit(InitializeCubitSuccessState(myAppointments: temp));
     }
   }
-  getAppointments(
+ Future<List<AppointmentEntity>> getAppointments(
       {required GetAppointmentRepository getAppointmentRepository}) async {
-    emit(GetSpecialistsLoadingState());
+    emit(GetAppointmentLoadingState());
     List<AppointmentEntity> appointments =
         await getAppointmentRepository.getAppointments();
   await  StoreMyAppointmentsUsingHive().storeMyAppointments(appointments: appointments);
-    emit(GetSpecialistsSuccessState(myAppointments: appointments));
+    emit(GetAppointmentSuccessState(myAppointments: appointments));
+    return appointments;
   }
 }

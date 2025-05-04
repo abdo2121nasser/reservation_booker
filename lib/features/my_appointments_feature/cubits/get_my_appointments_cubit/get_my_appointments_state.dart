@@ -18,8 +18,8 @@ final class InitializeCubitSuccessState extends SuccessState {
   InitializeCubitSuccessState({required super.myAppointments});
 }
 
-final class GetSpecialistsLoadingState extends LoadingState {}
+final class GetAppointmentLoadingState extends LoadingState {}
 
-final class GetSpecialistsSuccessState extends SuccessState {
-  GetSpecialistsSuccessState({required super.myAppointments});
+final class GetAppointmentSuccessState extends SuccessState {
+  GetAppointmentSuccessState({required super.myAppointments});
 }

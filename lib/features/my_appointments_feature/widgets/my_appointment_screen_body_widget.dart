@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reservation_booker/features/my_appointments_feature/cubits/get_my_appointments_cubit/get_my_appointments_cubit.dart';
+import 'package:reservation_booker/features/my_appointments_feature/cubits/get_my_appointments_cubit/get_my_appointments_cubit.dart';
 
-import '../widgets/my_appointment_container_widget.dart';
+import 'my_appointment_container_list_view_widget.dart';
 
 class MyAppointmentScreenBodyWidget extends StatelessWidget {
   const MyAppointmentScreenBodyWidget({
@@ -10,13 +13,17 @@ class MyAppointmentScreenBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
-
-
-
-
-        MyAppointmentContainerWidget()],
+        BlocBuilder<GetMyAppointmentsCubit, GetMyAppointmentsState>(
+          builder: (context, state) {
+            return MyAppointmentContainerListViewWidget(
+              myAppointments: (state as SuccessState).myAppointments,
+            );
+          },
+        ),
+      ],
     );
   }
 }

@@ -25,6 +25,7 @@ class GetAllAppointmentsFromFireBase implements GetAppointmentRepository {
           appointments.add(AppointmentModel.fromJson(
               docId: element.id, json: element.data()));
         });
+
         return appointments;
       });
     } on FirebaseException catch (e) {
@@ -48,7 +49,7 @@ class GetAllAppointmentsFromHive implements GetAppointmentRepository {
     try {
       var box = Hive.box(kMyAppointmentsBox);
       List<AppointmentEntity> myAppointments =
-      box.get(kSpecialists, defaultValue: []).cast<AppointmentEntity>();
+      box.get(kMyAppointments,defaultValue: []).cast<AppointmentEntity>();
      return myAppointments;
     } catch (error) {
       debugPrint(error.toString());
