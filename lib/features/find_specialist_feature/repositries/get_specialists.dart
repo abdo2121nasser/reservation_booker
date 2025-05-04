@@ -106,7 +106,8 @@ class GetFilteredSpecialistsByDocIdFromFireBase
           .doc(specialistDocId)
           .get()
           .then((doc) {
-        final SpecialistModel specialistModel = _filterBookedTimes(SpecialistModel.fromJson(
+        final SpecialistModel specialistModel =
+            _filterBookedTimes(SpecialistModel.fromJson(
           docId: doc.id,
           json: doc.data()!,
         ));
@@ -123,14 +124,14 @@ class GetFilteredSpecialistsByDocIdFromFireBase
       showToastMessage(message: kUnknownErrorMessage);
       return [];
     }
-}
+  }
+
   SpecialistModel _filterBookedTimes(SpecialistModel specialistModel) {
     for (AvailableDateEntity date in specialistModel.availableDates) {
       date.availableTimes.removeWhere((time) => time.isBooked == true);
     }
     return specialistModel;
   }
-
 }
 
 class GetFilteredSpecialistsByNameFromHive implements GetSpecialistsRepository {

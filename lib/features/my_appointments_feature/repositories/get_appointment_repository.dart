@@ -16,11 +16,12 @@ abstract class GetAppointmentRepository {
 class GetAllAppointmentsFromFireBase implements GetAppointmentRepository {
   @override
   Future<List<AppointmentEntity>> getAppointments() async {
-    final String userDocId=FirebaseAuth.instance.currentUser!.uid;
+    final String userDocId = FirebaseAuth.instance.currentUser!.uid;
 
     try {
-     return await FirebaseFirestore.instance
-     .collection(kUserCollection).doc(userDocId)
+      return await FirebaseFirestore.instance
+          .collection(kUserCollection)
+          .doc(userDocId)
           .collection(kMyAppointmentCollection)
           .get()
           .then((value) {
@@ -53,12 +54,24 @@ class GetAllAppointmentsFromHive implements GetAppointmentRepository {
     try {
       var box = Hive.box(kMyAppointmentsBox);
       List<AppointmentEntity> myAppointments =
-      box.get(kMyAppointments,defaultValue: []).cast<AppointmentEntity>();
-     return myAppointments;
+          box.get(kMyAppointments, defaultValue: []).cast<AppointmentEntity>();
+
+      return _filterAppointments(appointments:myAppointments);
     } catch (error) {
       debugPrint(error.toString());
       showToastMessage(message: kUnknownErrorMessage);
       return [];
     }
+  }
+
+  List<AppointmentEntity> _filterAppointments(
+      {required List<AppointmentEntity> appointments}) {
+    List<AppointmentEntity> temp = [];
+    for (var element in appointments) {
+      if (element.selectedTime.isBefore(DateTime.now())) {
+        temp.add(element);
+      }
+    }
+    return temp;
   }
 }
