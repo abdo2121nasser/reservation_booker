@@ -41,6 +41,7 @@ see real availability of the specialist, book, cancel or reschedule, and manage 
        List your booked appointments -> Fetch from Firebase -> stroe in Hive -> always read from Hive.<br>
        Show some information about the specialist: its name , category , its rate.<br>
        Cancel Appointment with a tap.<br>
+       User can't cancel appointment before its due with 1 hout.<br> 
        Reschedule Appointment with a tap -> navigate to specialist screen.<br>
    
    3. Specialist Details Screen
