@@ -16,7 +16,7 @@ class CancelAppointmentButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: () {
-          if (_canCancelAppointment(myAppointment.selectedTime) && false) {
+          if (_canCancelAppointment(myAppointment.selectedTime)) {
             CancelMyAppointmentsCubit.get(context).cancelAppointment(
                 cancelAppointmentRepository: CancelAppointmentFromFireBase(
                     appointmentModel: AppointmentModel(
