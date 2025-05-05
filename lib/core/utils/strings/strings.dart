@@ -49,5 +49,9 @@ const String kMyAppointments = 'my appointments';
 
 const String kRescheduleWord = 'Reschedule';
 
+const String kCancelWarningTitle = 'Unable to Cancel';
+const String kCancelWarningBody = 'You can\'t cancel the appointment before its date with 1 hour';
+
+
 
 
