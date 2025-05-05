@@ -46,7 +46,7 @@ see real availability of the specialist, book, cancel or reschedule, and manage 
    3. Specialist Details Screen
 
       Profile header + About section.<br>
-      Horizontal date picker show available dates → reveals available times in selected date.<br>
+      Horizontal date picker show not passed available dates and dates contain available times  → reveals not passed and not booked available times in selected date.<br>
       “Confirm” button books or reschedules -> hides booked time slotes -> auto‑refreshes appointments and specialists.<br>
 
 3. **Folder Structure**
